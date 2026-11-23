@@ -1,0 +1,137 @@
+type,scene,text,start_s,end_s,start_frame,end_frame
+scene,S01,THE HOOK,0,5,0,150
+scene,S02,SOCIAL EXCLUSION,5,10,150,300
+scene,S03,THE EMOTIONAL EFFECT,10,15,300,450
+scene,S04,MIRRORING,15,20,450,600
+scene,S05,THE CHAMELEON EFFECT,20,25,600,750
+scene,S06,SCARCITY,25,30,750,900
+scene,S07,URGENCY,30,35,900,1050
+scene,S08,FOOT-IN-THE-DOOR,35,40,1050,1200
+scene,S09,SMALL AGREEMENTS,40,45,1200,1350
+scene,S10,PSYCHOLOGICAL REACTANCE,45,50,1350,1500
+scene,S11,THE REVELATION,50,55,1500,1650
+scene,S12,THE REELSTER OUTRO,55,60,1650,1800
+line,S01,Your mind has weaknesses you probably don't even know about.,0.15,3.667,4,110
+word,S01,Your,0.15,0.34,4,10
+word,S01,mind,0.34,0.72,10,22
+word,S01,has,0.72,0.98,22,29
+word,S01,weaknesses,0.98,1.71,29,51
+word,S01,you,1.71,1.8,51,54
+word,S01,probably,1.8,2.46,54,74
+word,S01,don't,2.46,2.69,74,81
+word,S01,even,2.69,2.92,81,88
+word,S01,know,2.92,3.21,88,96
+word,S01,about.,3.21,3.66,96,110
+line,S02,"First, social exclusion: being ignored can threaten our sense of belonging.",5.15,10.618,154,319
+word,S02,"First,",5.15,5.71,154,171
+word,S02,social,6.03,6.52,181,196
+word,S02,exclusion:,6.52,7.27,196,218
+word,S02,being,7.82,8.13,235,244
+word,S02,ignored,8.13,8.67,244,260
+word,S02,can,8.67,8.85,260,266
+word,S02,threaten,8.85,9.34,266,280
+word,S02,our,9.34,9.47,280,284
+word,S02,sense,9.47,9.8,284,294
+word,S02,of,9.8,9.9,294,297
+word,S02,belonging.,9.9,10.61,297,318
+line,S03,"That feeling can hurt, even when no one says a word.",10.918,14.543,328,436
+word,S03,That,10.918,11.168,328,335
+word,S03,feeling,11.168,11.578,335,347
+word,S03,can,11.578,11.738,347,352
+word,S03,"hurt,",11.738,12.298,352,369
+word,S03,even,12.808,13.078,384,392
+word,S03,when,13.078,13.288,392,399
+word,S03,no,13.288,13.528,399,406
+word,S03,one,13.528,13.738,406,412
+word,S03,says,13.738,13.988,412,420
+word,S03,a,13.988,14.028,420,421
+word,S03,word.,14.028,14.538,421,436
+line,S04,"Next, mirroring: people often unconsciously copy gestures and expressions.",15.15,20.935,454,628
+word,S04,"Next,",15.15,15.71,454,471
+word,S04,mirroring:,16.06,16.74,482,502
+word,S04,people,17.23,17.6,517,528
+word,S04,often,17.6,17.92,528,538
+word,S04,unconsciously,17.92,18.82,538,565
+word,S04,copy,18.82,19.27,565,578
+word,S04,gestures,19.27,19.97,578,599
+word,S04,and,19.97,20.09,599,603
+word,S04,expressions.,20.09,20.92,603,628
+line,S05,This Chameleon Effect can help interactions feel more natural.,21.235,24.599,637,738
+word,S05,This,21.235,21.475,637,644
+word,S05,Chameleon,21.475,21.995,644,660
+word,S05,Effect,21.995,22.425,660,673
+word,S05,can,22.425,22.565,673,677
+word,S05,help,22.565,22.835,677,685
+word,S05,interactions,22.835,23.525,685,706
+word,S05,feel,23.525,23.795,706,714
+word,S05,more,23.795,23.955,714,719
+word,S05,natural.,23.955,24.595,719,738
+line,S06,Then there's scarcity: limited availability can make things seem more desirable.,25.15,30.351,754,911
+word,S06,Then,25.15,25.49,754,765
+word,S06,there's,25.49,25.74,765,772
+word,S06,scarcity:,25.74,26.51,772,795
+word,S06,limited,27.04,27.45,811,824
+word,S06,availability,27.45,28.23,824,847
+word,S06,can,28.23,28.43,847,853
+word,S06,make,28.43,28.65,853,860
+word,S06,things,28.65,28.93,860,868
+word,S06,seem,28.93,29.23,868,877
+word,S06,more,29.23,29.57,877,887
+word,S06,desirable.,29.57,30.35,887,910
+line,S07,That's why countdowns and 'only a few left' can influence decisions.,30.651,34.806,920,1044
+word,S07,That's,30.651,30.951,920,929
+word,S07,why,30.951,31.111,929,933
+word,S07,countdowns,31.111,31.881,933,956
+word,S07,and,31.881,32.181,956,965
+word,S07,'only,32.181,32.511,965,975
+word,S07,a,32.511,32.551,975,977
+word,S07,few,32.551,32.861,977,986
+word,S07,left',32.861,33.271,986,998
+word,S07,can,33.271,33.421,998,1003
+word,S07,influence,33.421,33.971,1003,1019
+word,S07,decisions.,33.971,34.791,1019,1044
+line,S08,The foot-in-the-door effect starts with a small request.,35.15,38.51,1054,1155
+word,S08,The,35.15,35.28,1054,1058
+word,S08,foot-in-the-door,35.28,36.1,1058,1083
+word,S08,effect,36.1,36.55,1083,1096
+word,S08,starts,36.55,37.07,1096,1112
+word,S08,with,37.07,37.26,1112,1118
+word,S08,a,37.26,37.31,1118,1119
+word,S08,small,37.31,37.83,1119,1135
+word,S08,request.,37.83,38.51,1135,1155
+line,S09,Agreeing once can make a larger request easier to accept.,40.15,43.941,1204,1318
+word,S09,Agreeing,40.15,40.75,1204,1222
+word,S09,once,40.75,41.22,1222,1237
+word,S09,can,41.22,41.39,1237,1242
+word,S09,make,41.39,41.57,1242,1247
+word,S09,a,41.57,41.61,1247,1248
+word,S09,larger,41.61,42.09,1248,1263
+word,S09,request,42.09,42.74,1263,1282
+word,S09,easier,42.74,43.19,1282,1296
+word,S09,to,43.19,43.34,1296,1300
+word,S09,accept.,43.34,43.93,1300,1318
+line,S10,"But threaten someone's freedom, and reactance may make them push back.",45.102,49.234,1353,1477
+word,S10,But,45.102,45.282,1353,1358
+word,S10,threaten,45.282,45.652,1358,1370
+word,S10,someone's,45.652,46.102,1370,1383
+word,S10,"freedom,",46.102,46.722,1383,1402
+word,S10,and,46.942,47.102,1408,1413
+word,S10,reactance,47.102,47.782,1413,1433
+word,S10,may,47.782,48.082,1433,1442
+word,S10,make,48.082,48.322,1442,1450
+word,S10,them,48.322,48.502,1450,1455
+word,S10,push,48.502,48.742,1455,1462
+word,S10,back.,48.742,49.232,1462,1477
+line,S11,"Sometimes, controlling your choices starts by making you feel you have none.",49.534,54.9,1486,1647
+word,S11,"Sometimes,",49.534,50.384,1486,1512
+word,S11,controlling,50.534,51.104,1516,1533
+word,S11,your,51.104,51.214,1533,1536
+word,S11,choices,51.214,51.824,1536,1555
+word,S11,starts,51.824,52.234,1555,1567
+word,S11,by,52.234,52.384,1567,1572
+word,S11,making,52.384,52.784,1572,1584
+word,S11,you,52.784,52.884,1584,1587
+word,S11,feel,52.884,53.544,1587,1606
+word,S11,you,54.054,54.194,1622,1626
+word,S11,have,54.194,54.554,1626,1637
+word,S11,none.,54.554,54.894,1637,1647

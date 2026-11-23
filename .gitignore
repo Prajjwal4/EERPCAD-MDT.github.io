@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+# Full-resolution masters (>100 MB) are delivered directly, not stored in git
+TheReelster_Project/output/TheReelster_Master_Captions.mp4
+TheReelster_Project/output/TheReelster_Master_NoCaptions.mp4
+TheReelster_Project/output/TheReelster_Reference_With_Narration.mp4

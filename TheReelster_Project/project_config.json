@@ -17,7 +17,7 @@
     "pixel_format": "yuv420p",
     "container": "mp4"
   },
-  "status": "batch_render_s04_s12_in_progress",
+  "status": "all_12_scenes_rendered_master_delivered",
   "visual_identity": {
     "background": "#09090D",
     "secondary_background": "#15151C",
@@ -612,7 +612,9 @@
       "narration": "output/voiceover_01.wav",
       "captions": "output/captions.srt",
       "markers": "output/markers.csv",
-      "qa_report": "output/qa_report.txt"
-    }
+      "qa_report": "output/qa_report.txt",
+      "full_length_preview": "output/TheReelster_Preview.mp4"
+    },
+    "note": "Full-resolution masters (~117 MB each) exceed GitHub's 100 MB file limit and are delivered directly (git-ignored). The 540x960 preview with narration is in the repo."
   }
 }
