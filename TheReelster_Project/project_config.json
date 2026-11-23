@@ -1,4 +1,237 @@
 {
-  "project": {"name": "TheReelster_Dark_Psychology_01", "channel": "TheReelster", "title": "5 Psychological Tricks That Can Influence Your Decisions", "category": "Psychology and Human Behaviour", "duration_seconds": 60, "resolution": {"width": 1080, "height": 1920}, "aspect_ratio": "9:16", "fps": 30, "total_frames": 1800, "video_codec": "libx264", "audio_codec": "aac", "pixel_format": "yuv420p", "container": "mp4"},
-  "status": "environment_verified"
+  "project": {
+    "name": "TheReelster_Dark_Psychology_01",
+    "channel": "TheReelster",
+    "title": "5 Psychological Tricks That Can Influence Your Decisions",
+    "category": "Psychology and Human Behaviour",
+    "duration_seconds": 60,
+    "resolution": {
+      "width": 1080,
+      "height": 1920
+    },
+    "aspect_ratio": "9:16",
+    "fps": 30,
+    "total_frames": 1800,
+    "video_codec": "libx264",
+    "audio_codec": "aac",
+    "pixel_format": "yuv420p",
+    "container": "mp4"
+  },
+  "status": "framework_verified",
+  "visual_identity": {
+    "background": "#09090D",
+    "secondary_background": "#15151C",
+    "primary_text": "#FFFFFF",
+    "secondary_text": "#B8B8C2",
+    "accent_red": "#E53945",
+    "accent_dark_red": "#741D29",
+    "research_blue": "#829BB8",
+    "palette_rules": {
+      "background": 0.65,
+      "neutral": 0.2,
+      "red_accent": 0.1,
+      "other": 0.05
+    }
+  },
+  "typography": {
+    "primary_font": "DejaVu Sans",
+    "fallback_font": "Arial",
+    "headline_weight": 800,
+    "body_weight": 700,
+    "headline_size_px": 104,
+    "caption_size_px": 66,
+    "maximum_caption_lines": 3,
+    "text_alignment": "center",
+    "highlight_color": "#E53945",
+    "safe_margins": {
+      "left": 90,
+      "right": 90,
+      "top": 180,
+      "bottom": 280
+    },
+    "rules": [
+      "Never display more than 7 words in one caption group.",
+      "Highlight important psychological terms in red.",
+      "Use white for ordinary narration captions.",
+      "Use a subtle dark shadow behind all captions.",
+      "Never place text outside the safe margins."
+    ],
+    "max_words_per_group": 7
+  },
+  "audio": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "voiceover_target_lufs": -16,
+    "voiceover_peak_dbfs_max": -1.5,
+    "music_target_db": -18,
+    "music_ducking": true,
+    "music_fade_in_seconds": 1.5,
+    "music_fade_out_seconds": 2.0,
+    "true_peak_max_dbtp": -1.0
+  },
+  "rendering": {
+    "stack": "Python + FFmpeg",
+    "intermediate_format": "1080x1920 H.264 MP4",
+    "intermediate_fps": 30,
+    "final_preset": "medium",
+    "crf": 18,
+    "audio_bitrate": "192k",
+    "faststart": true
+  },
+  "assets": {
+    "voiceover_01.wav": {
+      "duration": 60,
+      "type": "AI-generated narration",
+      "placeholder": false
+    },
+    "bg_music.wav": {
+      "duration": 60,
+      "type": "Original generated dark ambient soundtrack",
+      "placeholder": false
+    },
+    "sfx_01.wav": {
+      "duration": 2,
+      "type": "Low cinematic impact"
+    },
+    "sfx_02.wav": {
+      "duration": 2,
+      "type": "Subtle cinematic whoosh"
+    },
+    "sfx_03.wav": {
+      "duration": 2,
+      "type": "Heartbeat"
+    },
+    "visual_01.png": {
+      "duration": 5,
+      "subject": "Human silhouette in dark room"
+    },
+    "visual_02.png": {
+      "duration": 5,
+      "subject": "Close-up human eye"
+    },
+    "visual_03.png": {
+      "duration": 5,
+      "subject": "Isolated person in dark corridor"
+    },
+    "visual_04.png": {
+      "duration": 5,
+      "subject": "Person sitting alone in dark environment"
+    },
+    "visual_05.png": {
+      "duration": 5,
+      "subject": "Two people subtly mirroring body language"
+    },
+    "visual_06.png": {
+      "duration": 5,
+      "subject": "Two people interacting in cinematic environment"
+    },
+    "visual_07.png": {
+      "duration": 5,
+      "subject": "Limited object under dramatic spotlight"
+    },
+    "visual_08.png": {
+      "duration": 5,
+      "subject": "Countdown timer and disappearing opportunities"
+    },
+    "visual_09.png": {
+      "duration": 5,
+      "subject": "Hand reaching towards a door"
+    },
+    "visual_10.png": {
+      "duration": 5,
+      "subject": "Small request followed by larger request visual metaphor"
+    },
+    "visual_11.png": {
+      "duration": 5,
+      "subject": "Person resisting an invisible barrier"
+    },
+    "visual_12.png": {
+      "duration": 5,
+      "subject": "Mysterious human silhouette fading into darkness"
+    }
+  },
+  "outputs": {
+    "final_video": "output/TheReelster_Final.mp4",
+    "final_thumbnail": "output/thumbnail.jpg",
+    "final_captions": "output/captions.srt",
+    "qa_report": "output/qa_report.txt"
+  },
+  "rules": [
+    "Never reference an asset that does not exist.",
+    "Never silently substitute missing assets.",
+    "Never overwrite a verified scene without a reason.",
+    "All scenes must be exactly 5 seconds and 150 frames.",
+    "The final video must contain exactly 1800 frames.",
+    "All generated visuals must be original or properly licensed.",
+    "Do not use copyrighted movie footage or music.",
+    "Do not present AI-generated imagery as authentic historical evidence.",
+    "Preserve the factual meaning of the approved narration."
+  ],
+  "framework": {
+    "_note": "Tunables not defined by the original spec; added by the production engineer. Colour names refer to visual_identity keys.",
+    "fonts": {
+      "headline": "assets/fonts/DejaVuSans-Bold.ttf",
+      "body": "assets/fonts/DejaVuSans-Bold.ttf",
+      "fallback": null
+    },
+    "grading": {
+      "saturation": 0.82,
+      "contrast": 1.1,
+      "gamma": 1.12,
+      "shadow_tint": {
+        "color": "research_blue",
+        "strength": 0.1
+      },
+      "highlight_tint": {
+        "color": "accent_red",
+        "strength": 0.04
+      },
+      "vignette": 0.45,
+      "grain": 0.01,
+      "black_point": "background"
+    },
+    "camera_defaults": {
+      "zoom_start": 1.0,
+      "zoom_end": 1.1,
+      "ease": "ease_in_out"
+    },
+    "motion_blur": {
+      "samples": 4,
+      "shutter": 0.5
+    },
+    "transitions": {
+      "fade_in_frames": 9,
+      "fade_out_frames": 9,
+      "fade_color": "background"
+    },
+    "captions": {
+      "fade_frames": 4,
+      "line_spacing": 1.28,
+      "min_font_px": 44,
+      "edge_pad_px": 36,
+      "shadow": {
+        "color": "background",
+        "blur_wide": 8,
+        "offset_wide": [
+          0,
+          6
+        ],
+        "opacity_wide": 0.85,
+        "blur_tight": 2,
+        "offset_tight": [
+          0,
+          3
+        ],
+        "opacity_tight": 0.9
+      }
+    },
+    "audio_mix": {
+      "sfx_gain_db": -6,
+      "duck_threshold": 0.03,
+      "duck_ratio": 8,
+      "duck_attack_ms": 15,
+      "duck_release_ms": 350,
+      "limiter_ceiling_dbfs": -1.5
+    }
+  }
 }
