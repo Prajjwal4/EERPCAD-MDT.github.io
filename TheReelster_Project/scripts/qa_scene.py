@@ -65,7 +65,7 @@ def verify_caption_sync(video: Path, events, cfg: Config, tolerance: int = 4) ->
             ok &= good
             rows.append((w, ws, onset, "OK" if good else ("EARLY" if early else "CHECK")))
     return {"ok": ok, "rows": rows, "frames": len(fr),
-            "empty_before_first_word": int(((fr[:, :, :, :].min(axis=3) > 120).sum(axis=(1, 2))[:max(min(e.word_starts[0] for e in events if e.word_starts[0] > -100) - 1, 0)]).max(initial=0))}
+           "empty_before_first_word": int(((fr.min(axis=3) > 120).sum(axis=(1, 2))[:min(e.start for e in events)]).max(initial=0))}
 
 
 def persists_to_end(video: Path, last_event, cfg: Config) -> bool:

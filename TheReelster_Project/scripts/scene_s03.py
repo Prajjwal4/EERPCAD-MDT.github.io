@@ -70,7 +70,7 @@ def p_pose(f: float) -> dict:
     p["hip_x"] = BASE["hip_x"] + 1.3 * pain * math.sin(f * 1.9)                    # trembling
     p["lean"] += 0.8 * math.sin(f * 0.16)                                            # breathing
     wince = 0.85 * smooth((f - (A_HURT + 2)) / 3.0) * (1 - smooth((f - (A_HURT + 16)) / 4.0))
-    heavy = max(0.0, 0.9 * (1 - abs(f - (A_SAYS - 1)) / 3.0))                        # slow blink as the tear forms
+    heavy = max(0.0, 0.9 * (1 - abs(f - (TEAR_BORN - 2)) / 3.0))                        # slow blink as the tear forms
     p["blink"] = max(wince, heavy)
     return p
 
@@ -91,7 +91,7 @@ def lights(f: float) -> list[float]:
 
 # ===================================================================== effects
 RING_BIRTHS = [(A_HURT, 1.0), (A_HURT + 10, 0.85), (A_HURT + 22, 0.7), (A_EVEN - 4, 0.5), (A_NO, 0.35), (A_WORD - 4, 0.25)]
-TEAR_BORN, TEAR_DROP, TEAR_LAND = A_SAYS + 2, A_SAYS + 12, A_SAYS + 36
+TEAR_BORN, TEAR_DROP, TEAR_LAND = A_SAYS - 4, A_SAYS + 6, A_WORD + 17     # lands at f138, before the scene's fade-out dip (f141)
 LAND_Y = 1372.0
 
 
@@ -152,8 +152,8 @@ def fx(frame: np.ndarray, F: float, acts, ks):
             if win is not None:
                 sl, dx, dy = win
                 sy = 7.0 + vel * 0.55                                # motion-stretched while falling
-                core = np.exp(-((dx / 4.2) ** 2) - ((dy / sy) ** 2)) * 1.25 * size
-                halo = np.exp(-((dx / 16.0) ** 2) - ((dy / (sy * 2.2)) ** 2)) * 0.35 * size
+                core = np.exp(-((dx / 6.0) ** 2) - ((dy / (sy * 1.25)) ** 2)) * 1.9 * size
+                halo = np.exp(-((dx / 22.0) ** 2) - ((dy / (sy * 2.6)) ** 2)) * 0.5 * size
                 col = np.asarray([0.62, 0.80, 1.0], np.float32)
                 frame[:, sl[0], sl[1]] += (core + halo)[None] * col[:, None, None]
         if f >= TEAR_LAND:                                          # splash ring on the floor
@@ -162,7 +162,7 @@ def fx(frame: np.ndarray, F: float, acts, ks):
                 sl, dx, dy = win
                 age = f - TEAR_LAND
                 dd = np.sqrt(dx * dx + (dy * 3.4) ** 2)
-                ring = np.exp(-(((dd - (3 + age * 4.5)) / 3.0) ** 2)) * math.exp(-age / 4.0) * 0.9
+                ring = np.exp(-(((dd - (3 + age * 5.0)) / 3.4) ** 2)) * math.exp(-age / 6.0) * 1.3
                 frame[:, sl[0], sl[1]] += ring[None] * np.asarray([0.62, 0.80, 1.0], np.float32)[:, None, None]
 
 
