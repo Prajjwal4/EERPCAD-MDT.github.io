@@ -17,7 +17,7 @@
     "pixel_format": "yuv420p",
     "container": "mp4"
   },
-  "status": "s03_approved_awaiting_user_decision_on_batch_render",
+  "status": "batch_render_s04_s12_in_progress",
   "visual_identity": {
     "background": "#09090D",
     "secondary_background": "#15151C",
@@ -218,8 +218,8 @@
       "min_pixels_per_frame": 1.5
     },
     "transitions": {
-      "fade_in_frames": 9,
-      "fade_out_frames": 9,
+      "fade_in_frames": 4,
+      "fade_out_frames": 4,
       "fade_color": "background"
     },
     "captions": {
@@ -602,5 +602,17 @@
       "caption words appear within a few frames of their aligned audio frames (all scenes)",
       "every scene boundary seam is continuous (last frame of Sn to first frame of Sn+1 has no jump, no duplicate frame)"
     ]
+  },
+  "batch_delivery": {
+    "decided_by_user": "Render all remaining scenes and deliver the video timed to the narration (audio edited by the user). Burned-in captions + a caption-free master, 4-frame dips between scenes, plus a narration reference copy. Final QA against script and visuals at the end.",
+    "outputs": {
+      "master_captions": "output/TheReelster_Master_Captions.mp4",
+      "master_clean": "output/TheReelster_Master_NoCaptions.mp4",
+      "reference_with_narration": "output/TheReelster_Reference_With_Narration.mp4",
+      "narration": "output/voiceover_01.wav",
+      "captions": "output/captions.srt",
+      "markers": "output/markers.csv",
+      "qa_report": "output/qa_report.txt"
+    }
   }
 }

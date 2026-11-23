@@ -32,16 +32,17 @@ def clip_view(WW, WH, x0: int, y0: int, h: int, w: int):
     return (slice(fy0, fy1), slice(fx0, fx1)), (slice(ly, ly + fy1 - fy0), slice(lx, lx + fx1 - fx0))
 
 
-def render(stage: Stage, st: Style, cfg: Config, f: float, actors, ks: list[float], fx=None, wall_dx_limits=(170, 230)):
+def render(stage: Stage, st: Style, cfg: Config, f: float, actors, ks: list[float], fx=None, wall_dx_limits=(170, 230), pre_fx=None):
     S, WW, WH = st.world_scale, stage.WW, stage.WH
     RED = stage.RED
     GREY = np.asarray(cfg.rgb01("secondary_text"), np.float32)
     WHITE = np.asarray(cfg.rgb01("primary_text"), np.float32)
-    kw, ksolo = ks[0], ks[1]
+    kw, ksolo = ks[0], ks[min(1, len(ks) - 1)]
     lamp_x = sum(k * lp.pos[0] for k, lp in zip(ks, stage.lamps)) / max(sum(ks), 1e-3)
 
     acts = []
-    for name, pose, fl, sc in sorted(actors, key=lambda a: a[2]):
+    opts = {a[0]: (a[4] if len(a) > 4 else {}) for a in actors}      # optional 5th item: {"rim": "top|right|left|none", "wall_shadow": bool}
+    for name, pose, fl, sc, *_ in sorted(actors, key=lambda a: a[2]):
         sty = st.scaled(sc)
         hx = pose["hip_x"]
         region = (int(hx - 330 * sc), int(fl - 860 * sc), int(hx + 330 * sc), int(fl + 120))
@@ -60,13 +61,15 @@ def render(stage: Stage, st: Style, cfg: Config, f: float, actors, ks: list[floa
         full = Image.new("L", (WW, WH), 0)
         full.paste(Image.fromarray((np.clip(L.body, 0, 1) * 255).astype(np.uint8), "L"), (L.x0, L.y0))
         floor_sh = np.maximum(floor_sh, _affine(full, coef) * 0.9)
-        if name == "P":
+        if opts[name].get("wall_shadow", name == "P"):
             sgn = 1.0 if hx >= lamp_x else -1.0
             m, dx = 1.28, sgn * float(np.clip(abs(hx - lamp_x) * 0.40, *wall_dx_limits))
             axw, axw2 = hx * S, (hx + dx) * S
             wall_sh = _affine(full, (1 / m, 0, axw - axw2 / m, 0, 1 / m, FLW - FLW / m))
     shadow = np.maximum(_blur(wall_sh, 5), _blur(floor_sh, 4))
     frame = stage.compose(f, ks, 1 - 0.93 * shadow)
+    if pre_fx is not None:
+        pre_fx(frame, f, ks)
 
     for name, pose, fl, sc, hx, L in acts:
         h, w = L.body.shape
@@ -76,15 +79,20 @@ def render(stage: Stage, st: Style, cfg: Config, f: float, actors, ks: list[floa
         (fy, fx_), (ly, lx) = v
         reg = frame[:, fy, fx_]
         ol, bd = L.outline[ly, lx], L.body[ly, lx]
-        vis = 0.30 + 0.70 * min(1.0, (kw if name != "P" else max(kw * 0.5, ksolo)))
+        vis = 0.30 + 0.70 * min(1.0, (kw if name != "P" else max(kw * 0.5, ksolo)) if opts[name].get("vis") is None else opts[name]["vis"])
         reg[:] = reg * (1 - ol[None]) + (GREY * 0.42 * vis)[:, None, None] * ol[None]
         reg *= (1 - bd[None])
         reg += bd[None] * 0.012
-        if name == "P":   # lit from above by the spotlight (+ a little from the crowd's beam)
+        mode = opts[name].get("rim", "top" if name == "P" else "right")
+        if mode == "top":     # lit from above by the spotlight (+ a little from the crowd's beam)
             rim = np.clip(ol - np.roll(ol, 9, axis=0), 0, 1) * 1.25 * ksolo + np.clip(ol - np.roll(ol, -9, axis=1), 0, 1) * 0.8 * kw
+        elif mode == "left":
+            rim = np.clip(ol - np.roll(ol, 9, axis=1), 0, 1) * 1.35 * max(kw, ksolo)
+        elif mode == "none":
+            rim = np.zeros_like(ol)
         else:
             rim = np.clip(ol - np.roll(ol, -9, axis=1), 0, 1) * 1.35 * kw
-        reg += (_blur(rim, 1.2))[None] * RED[:, None, None]
+        reg += (_blur(rim, 1.2))[None] * np.asarray(opts[name].get("rim_color", RED), np.float32)[:, None, None]
         fr_row = round(fl * S) - L.y0
         d = min(h - fr_row, 110)
         if d > 0 and fr_row - d > 0:

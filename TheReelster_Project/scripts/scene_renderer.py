@@ -246,7 +246,7 @@ class SceneRenderer:
         img = Image.fromarray((acc / len(offs) + 0.5).astype(np.uint8))
         return self._planar(self._sample(img, cam, i / max(n - 1, 1)))
 
-    def iter_frames(self, scene: Scene, test_mode: bool = False) -> Iterator[np.ndarray]:
+    def iter_frames(self, scene: Scene, test_mode: bool = False, want_clean: bool = False):
         n = scene.frames if scene.frames is not None else self.cfg.scene_frames
         if n != self.cfg.scene_frames and not test_mode:
             raise ValueError(f"scene must be exactly {self.cfg.scene_frames} frames, got {n}")
@@ -280,6 +280,7 @@ class SceneRenderer:
                 x = self.visual_frame(img, cam, i, n)
             x = self.grade.apply(x, i)
             x = self.transitions.apply(x, i, n, scene.fade_in, scene.fade_out)
+            clean = (np.clip(x, 0, 1).transpose(1, 2, 0) * 255 + 0.5).astype(np.uint8, order="C") if want_clean else None
             for ev, ov in overlays:
                 if ev.start <= i < ev.end:
                     self.captions.composite(x, ov, self.captions.event_opacity(i - ev.start, ev.end - ev.start))
@@ -298,10 +299,21 @@ class SceneRenderer:
                         g += 0.05 * np.sin(lf * 0.3) * (lf > 24)
                         self.captions.composite(x, glow, g * t * out)
                     self.captions.composite(x, ovw, t * out, dy=int(round(rv["rise_px"] * (1 - t))))
-            yield (np.clip(x, 0, 1).transpose(1, 2, 0) * 255 + 0.5).astype(np.uint8, order="C")
+            frame_u8 = (np.clip(x, 0, 1).transpose(1, 2, 0) * 255 + 0.5).astype(np.uint8, order="C")
+            yield (frame_u8, clean) if want_clean else frame_u8
 
-    def render_scene(self, scene: Scene, writer: FFmpegWriter, test_mode: bool = False) -> int:
+    def render_scene(self, scene: Scene, writer: FFmpegWriter, test_mode: bool = False,
+                     clean_writer: FFmpegWriter | None = None) -> int:
+        """Encode the scene; if `clean_writer` is given, also encode the same frames WITHOUT captions (one pass)."""
         before = writer.count
-        for frame in self.iter_frames(scene, test_mode):
-            writer.write(frame)
+        for item in self.iter_frames(scene, test_mode, want_clean=clean_writer is not None):
+            if clean_writer is not None:
+                frame, clean = item
+                writer.write(frame); clean_writer.write(clean)
+            else:
+                writer.write(item)
         return writer.count - before
+
+    def render_scene_files(self, scene: Scene, out: Path, clean_out: Path, test_mode: bool = False) -> int:
+        with FFmpegWriter(out, self.cfg) as w, FFmpegWriter(clean_out, self.cfg) as wc:
+            return self.render_scene(scene, w, test_mode, clean_writer=wc)

@@ -364,8 +364,7 @@ def main():
         sys.exit("stickman leaves the safe area")
     scene = build_scene(world)
     out, preview, key = cfg.path("scenes/S01.mp4"), cfg.path("qa/S01_preview.png"), cfg.path("assets/visuals/visual_01.png")
-    with FFmpegWriter(out, cfg) as w:
-        n = R.render_scene(scene, w)                    # strict: raises unless exactly 150 frames
+    n = R.render_scene_files(scene, out, cfg.path("scenes/clean/S01_clean.mp4"))      # strict: raises unless exactly 150 frames
     p = ffprobe(out)
     print(json.dumps(p, indent=2))
     ok = (n == 150 and int(p["nb_read_frames"]) == 150 and (p["width"], p["height"]) == (1080, 1920)

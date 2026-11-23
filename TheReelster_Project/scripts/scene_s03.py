@@ -214,8 +214,7 @@ def main():
         sys.exit("character leaves the safe area")
     scene = build_scene()
     out = cfg.path("scenes/S03.mp4")
-    with FFmpegWriter(out, cfg) as w:
-        n = R.render_scene(scene, w)                   # strict: raises unless exactly 150 frames
+    n = R.render_scene_files(scene, out, cfg.path("scenes/clean/S03_clean.mp4"))      # strict: raises unless exactly 150 frames
     p = qa_scene.probe(out)
     sync = qa_scene.verify_caption_sync(out, scene.captions, cfg)
     ok = qa_scene.report(p, sync, None) and n == 150

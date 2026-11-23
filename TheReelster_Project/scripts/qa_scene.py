@@ -25,11 +25,14 @@ def format_ok(p: dict) -> bool:
 
 
 def _frames(video: Path, box: tuple[int, int, int, int]) -> np.ndarray:
+    """RGB crops of every frame. The crop is aligned to even pixels (FFmpeg rounds odd sizes for yuv420) and cut back to `box`."""
     x0, y0, x1, y1 = box
+    ex0, ey0, ex1, ey1 = x0 - (x0 % 2), y0 - (y0 % 2), x1 + (x1 % 2), y1 + (y1 % 2)
     raw = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", str(video), "-vf",
-                          f"crop={x1 - x0}:{y1 - y0}:{x0}:{y0},format=rgb24", "-f", "rawvideo", "-"],
+                          f"crop={ex1 - ex0}:{ey1 - ey0}:{ex0}:{ey0},format=rgb24", "-f", "rawvideo", "-"],
                          capture_output=True, check=True).stdout
-    return np.frombuffer(raw, np.uint8).reshape(-1, y1 - y0, x1 - x0, 3).astype(np.int32)
+    arr = np.frombuffer(raw, np.uint8).reshape(-1, ey1 - ey0, ex1 - ex0, 3).astype(np.int32)
+    return arr[:, y0 - ey0:y1 - ey0, x0 - ex0:x1 - ex0]
 
 
 def verify_caption_sync(video: Path, events, cfg: Config, tolerance: int = 4) -> dict:
@@ -47,6 +50,8 @@ def verify_caption_sync(video: Path, events, cfg: Config, tolerance: int = 4) ->
             ws = ev.word_starts[i]
             if ws <= -100:                                     # carried over from the previous scene
                 rows.append((w, ws, None, "carried-in")); continue
+            if ws >= len(fr) - 2:                              # begins at/after the last frame: appears in the next scene
+                rows.append((w, ws, None, "next-scene")); continue
             l, t, r, b = cap.build(ev.group, ev.kind, ev.position, only=frozenset([i])).ink_bbox
             reg = fr[:, t - band[1]:b - band[1], l:r]
             if i in hit:   # red word: red-dominant pixels
