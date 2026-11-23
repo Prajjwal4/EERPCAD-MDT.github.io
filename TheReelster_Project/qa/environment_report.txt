@@ -1,0 +1,56 @@
+TheReelster environment report - 2026-11-23T03:36:56+00:00
+========================================================================
+[PASS] (MANDATORY) Operating system
+        Linux 6.18.44-fc-v726 (x86_64) | Linux-6.18.44-fc-v726-x86_64-with-glibc2.39
+[PASS] (MANDATORY) ffmpeg
+        /usr/bin/ffmpeg | ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+[PASS] (MANDATORY) ffprobe
+        /usr/bin/ffprobe | ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers
+[PASS] (MANDATORY) ffmpeg encoder libx264
+        available
+[PASS] (MANDATORY) ffmpeg encoder aac
+        available
+[PASS] (MANDATORY) ffmpeg filter drawtext
+        available
+[PASS] (MANDATORY) ffmpeg filter sidechaincompress
+        available
+[PASS] (MANDATORY) ffmpeg filter loudnorm
+        available
+[PASS] (MANDATORY) ffmpeg filter zoompan
+        available
+[PASS] (MANDATORY) Python >= 3.9
+        /usr/local/bin/python3 | 3.13.18
+[PASS] (MANDATORY) pip
+        pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.13)
+[PASS] (OPTIONAL) node
+        /opt/node22/bin/node | v22.23.5
+[PASS] (OPTIONAL) npm
+        /opt/node22/bin/npm | 10.9.9
+[PASS] (MANDATORY) Free disk >= 5 GB
+        64.2 GB free at /home/user/EERPCAD-MDT.github.io/TheReelster_Project
+[PASS] (MANDATORY) python package numpy
+        import ok, version 2.5.3
+[PASS] (MANDATORY) python package Pillow
+        import ok, version 11.3.0
+[PASS] (MANDATORY) python package moviepy
+        import ok, version 2.2.1
+[PASS] (MANDATORY) python package pydub
+        import ok, version 0.25.1
+[PASS] (OPTIONAL) Image rendering: Pillow + DejaVu Sans Bold
+        can draw gradients/text/composites locally (procedural; NOT photoreal generation)
+[PASS] (OPTIONAL) Image tool convert
+        /usr/bin/convert
+[N/A ] (OPTIONAL) Image tool magick
+        not found
+[N/A ] (OPTIONAL) Image tool inkscape
+        not found
+[N/A ] (OPTIONAL) Image tool blender
+        not found
+[PASS] (OPTIONAL) Playwright (HTML/CSS -> PNG rendering)
+        require('playwright') ok
+[N/A ] (OPTIONAL) AI image generation (local model)
+        no local diffusion model/GPU tooling detected; script does not test remote tools. Remote generators (if any) must be verified by an actual generation call, not by this script.
+[PASS] (MANDATORY) FFmpeg 1080x1920 H.264 encode test
+        ffprobe: h264,1080,1920,yuv420p,30/1,60 (expected h264,1080,1920,yuv420p,30/1,60)
+========================================================================
+RESULT: ALL MANDATORY CHECKS PASSED
