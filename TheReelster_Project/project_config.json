@@ -17,7 +17,7 @@
     "pixel_format": "yuv420p",
     "container": "mp4"
   },
-  "status": "s03_built_awaiting_review",
+  "status": "s03_approved_awaiting_user_decision_on_batch_render",
   "visual_identity": {
     "background": "#09090D",
     "secondary_background": "#15151C",
@@ -380,7 +380,7 @@
         "highlight": [
           "hurt"
         ],
-        "approved": false
+        "approved": true
       },
       {
         "id": "S04",
