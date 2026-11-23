@@ -182,7 +182,7 @@ class Plan:
         for g in self._groups:
             if g["start"] < f0 + self.sf and g["end"] > f0:
                 carry_in, carry_out = g["start"] < f0, g["end"] > f0 + self.sf
-                ws = [(w - f0) if w >= f0 else CARRIED for w in g["word_starts"]]
+                ws = [(w - f0) if w >= f0 - 5 else CARRIED for w in g["word_starts"]]      # a word revealed <=5 frames before the cut is still fading in
                 sp.captions.append(CaptionPlan(g["text"], g["highlights"], max(g["start"] - f0, 0), min(g["end"] - f0, self.sf),
                                                ws, carry_in, carry_out, g["scene"]))
         return sp

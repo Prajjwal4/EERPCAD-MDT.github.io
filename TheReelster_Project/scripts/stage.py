@@ -147,7 +147,7 @@ class Stage:
             if k > 0.003:
                 frame += lit * (unlit * k)[None]
                 beam += bm * k
-        ox, oy = int(f * 1.6), int(f * 0.5)
+        ox, oy = int(f * 1.6) % 420, int(f * 0.5) % 220     # wrap inside the texture margin (no-op for f < 262)
         haze = self.haze_tex[oy:oy + WH, ox:ox + WW] * beam * unlit
         frame += (haze * 0.38)[None] * RED[:, None, None]
         for (x0, y0, sprite), k in zip(self.bulb, ks):
