@@ -377,7 +377,9 @@
           "That feeling can hurt,",
           "even when no one says a word."
         ],
-        "highlight": [],
+        "highlight": [
+          "hurt"
+        ],
         "approved": false
       },
       {
