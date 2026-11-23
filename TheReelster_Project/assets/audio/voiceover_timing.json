@@ -1,0 +1,1060 @@
+{
+  "voiceover": "assets/audio/voiceover_01.wav",
+  "duration": 50.521,
+  "fps": 30,
+  "method": "PocketSphinx forced alignment of the approved script (local); cross-checked with FFmpeg silencedetect",
+  "silences": [
+    {
+      "start": 3.24946,
+      "end": 3.87243
+    },
+    {
+      "start": 4.35546,
+      "end": 4.70458
+    },
+    {
+      "start": 5.80016,
+      "end": 6.27533
+    },
+    {
+      "start": 9.12458,
+      "end": 9.65596
+    },
+    {
+      "start": 10.8509,
+      "end": 11.2725
+    },
+    {
+      "start": 12.8731,
+      "end": 13.446
+    },
+    {
+      "start": 13.9368,
+      "end": 14.2986
+    },
+    {
+      "start": 14.8771,
+      "end": 15.3871
+    },
+    {
+      "start": 18.9475,
+      "end": 19.3425
+    },
+    {
+      "start": 22.5972,
+      "end": 23.1479
+    },
+    {
+      "start": 24.4512,
+      "end": 24.9124
+    },
+    {
+      "start": 28.217,
+      "end": 28.6169
+    },
+    {
+      "start": 30.1674,
+      "end": 30.3716
+    },
+    {
+      "start": 31.4448,
+      "end": 31.6252
+    },
+    {
+      "start": 33.0869,
+      "end": 33.5475
+    },
+    {
+      "start": 36.567,
+      "end": 37.0007
+    },
+    {
+      "start": 40.7064,
+      "end": 41.1507
+    },
+    {
+      "start": 42.6553,
+      "end": 42.9282
+    },
+    {
+      "start": 45.168,
+      "end": 45.6515
+    },
+    {
+      "start": 46.4127,
+      "end": 46.6048
+    },
+    {
+      "start": 50.2684,
+      "end": 50.5208
+    }
+  ],
+  "lines": [
+    {
+      "scene": 1,
+      "text": "Your mind has weaknesses you probably don't even know about.",
+      "start": 0.0,
+      "end": 3.29,
+      "start_frame": 0,
+      "end_frame": 99,
+      "window": [
+        0.0,
+        5.0
+      ],
+      "words": [
+        {
+          "word": "your",
+          "start": 0.0,
+          "end": 0.23,
+          "start_frame": 0,
+          "end_frame": 7
+        },
+        {
+          "word": "mind",
+          "start": 0.23,
+          "end": 0.55,
+          "start_frame": 7,
+          "end_frame": 16
+        },
+        {
+          "word": "has",
+          "start": 0.55,
+          "end": 0.79,
+          "start_frame": 16,
+          "end_frame": 24
+        },
+        {
+          "word": "weaknesses",
+          "start": 0.79,
+          "end": 1.5,
+          "start_frame": 24,
+          "end_frame": 45
+        },
+        {
+          "word": "you",
+          "start": 1.5,
+          "end": 1.62,
+          "start_frame": 45,
+          "end_frame": 49
+        },
+        {
+          "word": "probably",
+          "start": 1.62,
+          "end": 2.26,
+          "start_frame": 49,
+          "end_frame": 68
+        },
+        {
+          "word": "don't",
+          "start": 2.26,
+          "end": 2.48,
+          "start_frame": 68,
+          "end_frame": 74
+        },
+        {
+          "word": "even",
+          "start": 2.48,
+          "end": 2.68,
+          "start_frame": 74,
+          "end_frame": 80
+        },
+        {
+          "word": "know",
+          "start": 2.68,
+          "end": 2.95,
+          "start_frame": 80,
+          "end_frame": 88
+        },
+        {
+          "word": "about",
+          "start": 2.95,
+          "end": 3.29,
+          "start_frame": 88,
+          "end_frame": 99
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "text": "First, social exclusion: being ignored can threaten our sense of belonging.",
+      "start": 3.84,
+      "end": 9.15,
+      "start_frame": 115,
+      "end_frame": 274,
+      "window": [
+        5.0,
+        10.0
+      ],
+      "words": [
+        {
+          "word": "first",
+          "start": 3.84,
+          "end": 4.39,
+          "start_frame": 115,
+          "end_frame": 132
+        },
+        {
+          "word": "social",
+          "start": 4.67,
+          "end": 5.2,
+          "start_frame": 140,
+          "end_frame": 156
+        },
+        {
+          "word": "exclusion",
+          "start": 5.2,
+          "end": 5.81,
+          "start_frame": 156,
+          "end_frame": 174
+        },
+        {
+          "word": "being",
+          "start": 6.28,
+          "end": 6.58,
+          "start_frame": 188,
+          "end_frame": 197
+        },
+        {
+          "word": "ignored",
+          "start": 6.58,
+          "end": 7.19,
+          "start_frame": 197,
+          "end_frame": 216
+        },
+        {
+          "word": "can",
+          "start": 7.19,
+          "end": 7.38,
+          "start_frame": 216,
+          "end_frame": 221
+        },
+        {
+          "word": "threaten",
+          "start": 7.38,
+          "end": 7.9,
+          "start_frame": 221,
+          "end_frame": 237
+        },
+        {
+          "word": "our",
+          "start": 7.9,
+          "end": 8.03,
+          "start_frame": 237,
+          "end_frame": 241
+        },
+        {
+          "word": "sense",
+          "start": 8.03,
+          "end": 8.37,
+          "start_frame": 241,
+          "end_frame": 251
+        },
+        {
+          "word": "of",
+          "start": 8.37,
+          "end": 8.48,
+          "start_frame": 251,
+          "end_frame": 254
+        },
+        {
+          "word": "belonging",
+          "start": 8.48,
+          "end": 9.15,
+          "start_frame": 254,
+          "end_frame": 274
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "text": "That feeling can hurt, even when no one says a word.",
+      "start": 9.63,
+      "end": 12.92,
+      "start_frame": 289,
+      "end_frame": 388,
+      "window": [
+        10.0,
+        15.0
+      ],
+      "words": [
+        {
+          "word": "that",
+          "start": 9.63,
+          "end": 9.77,
+          "start_frame": 289,
+          "end_frame": 293
+        },
+        {
+          "word": "feeling",
+          "start": 9.77,
+          "end": 10.16,
+          "start_frame": 293,
+          "end_frame": 305
+        },
+        {
+          "word": "can",
+          "start": 10.16,
+          "end": 10.31,
+          "start_frame": 305,
+          "end_frame": 309
+        },
+        {
+          "word": "hurt",
+          "start": 10.31,
+          "end": 10.91,
+          "start_frame": 309,
+          "end_frame": 327
+        },
+        {
+          "word": "even",
+          "start": 11.23,
+          "end": 11.53,
+          "start_frame": 337,
+          "end_frame": 346
+        },
+        {
+          "word": "when",
+          "start": 11.53,
+          "end": 11.72,
+          "start_frame": 346,
+          "end_frame": 352
+        },
+        {
+          "word": "no",
+          "start": 11.72,
+          "end": 11.95,
+          "start_frame": 352,
+          "end_frame": 358
+        },
+        {
+          "word": "one",
+          "start": 11.95,
+          "end": 12.14,
+          "start_frame": 358,
+          "end_frame": 364
+        },
+        {
+          "word": "says",
+          "start": 12.14,
+          "end": 12.39,
+          "start_frame": 364,
+          "end_frame": 372
+        },
+        {
+          "word": "a",
+          "start": 12.39,
+          "end": 12.43,
+          "start_frame": 372,
+          "end_frame": 373
+        },
+        {
+          "word": "word",
+          "start": 12.43,
+          "end": 12.92,
+          "start_frame": 373,
+          "end_frame": 388
+        }
+      ]
+    },
+    {
+      "scene": 4,
+      "text": "Next, mirroring: people often unconsciously copy gestures and expressions.",
+      "start": 13.43,
+      "end": 18.99,
+      "start_frame": 403,
+      "end_frame": 570,
+      "window": [
+        15.0,
+        20.0
+      ],
+      "words": [
+        {
+          "word": "next",
+          "start": 13.43,
+          "end": 13.98,
+          "start_frame": 403,
+          "end_frame": 419
+        },
+        {
+          "word": "mirroring",
+          "start": 14.26,
+          "end": 14.89,
+          "start_frame": 428,
+          "end_frame": 447
+        },
+        {
+          "word": "people",
+          "start": 15.32,
+          "end": 15.65,
+          "start_frame": 460,
+          "end_frame": 470
+        },
+        {
+          "word": "often",
+          "start": 15.65,
+          "end": 16.05,
+          "start_frame": 470,
+          "end_frame": 482
+        },
+        {
+          "word": "unconsciously",
+          "start": 16.05,
+          "end": 16.94,
+          "start_frame": 482,
+          "end_frame": 508
+        },
+        {
+          "word": "copy",
+          "start": 16.94,
+          "end": 17.37,
+          "start_frame": 508,
+          "end_frame": 521
+        },
+        {
+          "word": "gestures",
+          "start": 17.37,
+          "end": 18.05,
+          "start_frame": 521,
+          "end_frame": 542
+        },
+        {
+          "word": "and",
+          "start": 18.05,
+          "end": 18.14,
+          "start_frame": 542,
+          "end_frame": 544
+        },
+        {
+          "word": "expressions",
+          "start": 18.14,
+          "end": 18.99,
+          "start_frame": 544,
+          "end_frame": 570
+        }
+      ]
+    },
+    {
+      "scene": 5,
+      "text": "This Chameleon Effect can help interactions feel more natural.",
+      "start": 19.32,
+      "end": 22.65,
+      "start_frame": 580,
+      "end_frame": 680,
+      "window": [
+        20.0,
+        25.0
+      ],
+      "words": [
+        {
+          "word": "this",
+          "start": 19.32,
+          "end": 19.47,
+          "start_frame": 580,
+          "end_frame": 584
+        },
+        {
+          "word": "chameleon",
+          "start": 19.47,
+          "end": 20.04,
+          "start_frame": 584,
+          "end_frame": 601
+        },
+        {
+          "word": "effect",
+          "start": 20.04,
+          "end": 20.5,
+          "start_frame": 601,
+          "end_frame": 615
+        },
+        {
+          "word": "can",
+          "start": 20.5,
+          "end": 20.65,
+          "start_frame": 615,
+          "end_frame": 620
+        },
+        {
+          "word": "help",
+          "start": 20.65,
+          "end": 20.91,
+          "start_frame": 620,
+          "end_frame": 627
+        },
+        {
+          "word": "interactions",
+          "start": 20.91,
+          "end": 21.63,
+          "start_frame": 627,
+          "end_frame": 649
+        },
+        {
+          "word": "feel",
+          "start": 21.63,
+          "end": 21.89,
+          "start_frame": 649,
+          "end_frame": 657
+        },
+        {
+          "word": "more",
+          "start": 21.89,
+          "end": 22.09,
+          "start_frame": 657,
+          "end_frame": 663
+        },
+        {
+          "word": "natural",
+          "start": 22.09,
+          "end": 22.65,
+          "start_frame": 663,
+          "end_frame": 680
+        }
+      ]
+    },
+    {
+      "scene": 6,
+      "text": "Then there's scarcity: limited availability can make things seem more desirable.",
+      "start": 23.19,
+      "end": 28.28,
+      "start_frame": 696,
+      "end_frame": 848,
+      "window": [
+        25.0,
+        30.0
+      ],
+      "words": [
+        {
+          "word": "then",
+          "start": 23.19,
+          "end": 23.57,
+          "start_frame": 696,
+          "end_frame": 707
+        },
+        {
+          "word": "there's",
+          "start": 23.57,
+          "end": 23.8,
+          "start_frame": 707,
+          "end_frame": 714
+        },
+        {
+          "word": "scarcity",
+          "start": 23.8,
+          "end": 24.54,
+          "start_frame": 714,
+          "end_frame": 736
+        },
+        {
+          "word": "limited",
+          "start": 24.9,
+          "end": 25.31,
+          "start_frame": 747,
+          "end_frame": 759
+        },
+        {
+          "word": "availability",
+          "start": 25.31,
+          "end": 26.17,
+          "start_frame": 759,
+          "end_frame": 785
+        },
+        {
+          "word": "can",
+          "start": 26.17,
+          "end": 26.36,
+          "start_frame": 785,
+          "end_frame": 791
+        },
+        {
+          "word": "make",
+          "start": 26.36,
+          "end": 26.6,
+          "start_frame": 791,
+          "end_frame": 798
+        },
+        {
+          "word": "things",
+          "start": 26.6,
+          "end": 26.87,
+          "start_frame": 798,
+          "end_frame": 806
+        },
+        {
+          "word": "seem",
+          "start": 26.87,
+          "end": 27.18,
+          "start_frame": 806,
+          "end_frame": 815
+        },
+        {
+          "word": "more",
+          "start": 27.18,
+          "end": 27.47,
+          "start_frame": 815,
+          "end_frame": 824
+        },
+        {
+          "word": "desirable",
+          "start": 27.47,
+          "end": 28.28,
+          "start_frame": 824,
+          "end_frame": 848
+        }
+      ]
+    },
+    {
+      "scene": 7,
+      "text": "That's why countdowns and 'only a few left' can influence decisions.",
+      "start": 28.58,
+      "end": 33.12,
+      "start_frame": 857,
+      "end_frame": 994,
+      "window": [
+        30.0,
+        35.0
+      ],
+      "words": [
+        {
+          "word": "that's",
+          "start": 28.58,
+          "end": 28.76,
+          "start_frame": 857,
+          "end_frame": 863
+        },
+        {
+          "word": "why",
+          "start": 28.76,
+          "end": 28.92,
+          "start_frame": 863,
+          "end_frame": 868
+        },
+        {
+          "word": "countdowns",
+          "start": 28.92,
+          "end": 29.82,
+          "start_frame": 868,
+          "end_frame": 895
+        },
+        {
+          "word": "and",
+          "start": 29.82,
+          "end": 30.16,
+          "start_frame": 895,
+          "end_frame": 905
+        },
+        {
+          "word": "only",
+          "start": 30.35,
+          "end": 30.67,
+          "start_frame": 910,
+          "end_frame": 920
+        },
+        {
+          "word": "a",
+          "start": 30.67,
+          "end": 30.7,
+          "start_frame": 920,
+          "end_frame": 921
+        },
+        {
+          "word": "few",
+          "start": 30.7,
+          "end": 30.96,
+          "start_frame": 921,
+          "end_frame": 929
+        },
+        {
+          "word": "left",
+          "start": 30.96,
+          "end": 31.57,
+          "start_frame": 929,
+          "end_frame": 947
+        },
+        {
+          "word": "can",
+          "start": 31.57,
+          "end": 31.75,
+          "start_frame": 947,
+          "end_frame": 952
+        },
+        {
+          "word": "influence",
+          "start": 31.75,
+          "end": 32.37,
+          "start_frame": 952,
+          "end_frame": 971
+        },
+        {
+          "word": "decisions",
+          "start": 32.37,
+          "end": 33.12,
+          "start_frame": 971,
+          "end_frame": 994
+        }
+      ]
+    },
+    {
+      "scene": 8,
+      "text": "The foot-in-the-door effect starts with a small request.",
+      "start": 33.51,
+      "end": 36.61,
+      "start_frame": 1005,
+      "end_frame": 1098,
+      "window": [
+        35.0,
+        40.0
+      ],
+      "words": [
+        {
+          "word": "the",
+          "start": 33.51,
+          "end": 33.6,
+          "start_frame": 1005,
+          "end_frame": 1008
+        },
+        {
+          "word": "foot",
+          "start": 33.6,
+          "end": 33.87,
+          "start_frame": 1008,
+          "end_frame": 1016
+        },
+        {
+          "word": "in",
+          "start": 33.87,
+          "end": 33.96,
+          "start_frame": 1016,
+          "end_frame": 1019
+        },
+        {
+          "word": "the",
+          "start": 33.96,
+          "end": 34.04,
+          "start_frame": 1019,
+          "end_frame": 1021
+        },
+        {
+          "word": "door",
+          "start": 34.04,
+          "end": 34.37,
+          "start_frame": 1021,
+          "end_frame": 1031
+        },
+        {
+          "word": "effect",
+          "start": 34.37,
+          "end": 34.8,
+          "start_frame": 1031,
+          "end_frame": 1044
+        },
+        {
+          "word": "starts",
+          "start": 34.8,
+          "end": 35.23,
+          "start_frame": 1044,
+          "end_frame": 1057
+        },
+        {
+          "word": "with",
+          "start": 35.23,
+          "end": 35.4,
+          "start_frame": 1057,
+          "end_frame": 1062
+        },
+        {
+          "word": "a",
+          "start": 35.4,
+          "end": 35.43,
+          "start_frame": 1062,
+          "end_frame": 1063
+        },
+        {
+          "word": "small",
+          "start": 35.43,
+          "end": 35.9,
+          "start_frame": 1063,
+          "end_frame": 1077
+        },
+        {
+          "word": "request",
+          "start": 35.9,
+          "end": 36.61,
+          "start_frame": 1077,
+          "end_frame": 1098
+        }
+      ]
+    },
+    {
+      "scene": 9,
+      "text": "Agreeing once can make a larger request easier to accept.",
+      "start": 36.99,
+      "end": 40.77,
+      "start_frame": 1110,
+      "end_frame": 1223,
+      "window": [
+        40.0,
+        45.0
+      ],
+      "words": [
+        {
+          "word": "agreeing",
+          "start": 36.99,
+          "end": 37.57,
+          "start_frame": 1110,
+          "end_frame": 1127
+        },
+        {
+          "word": "once",
+          "start": 37.57,
+          "end": 38.11,
+          "start_frame": 1127,
+          "end_frame": 1143
+        },
+        {
+          "word": "can",
+          "start": 38.11,
+          "end": 38.33,
+          "start_frame": 1143,
+          "end_frame": 1150
+        },
+        {
+          "word": "make",
+          "start": 38.33,
+          "end": 38.51,
+          "start_frame": 1150,
+          "end_frame": 1155
+        },
+        {
+          "word": "a",
+          "start": 38.51,
+          "end": 38.54,
+          "start_frame": 1155,
+          "end_frame": 1156
+        },
+        {
+          "word": "larger",
+          "start": 38.54,
+          "end": 39.0,
+          "start_frame": 1156,
+          "end_frame": 1170
+        },
+        {
+          "word": "request",
+          "start": 39.0,
+          "end": 39.59,
+          "start_frame": 1170,
+          "end_frame": 1188
+        },
+        {
+          "word": "easier",
+          "start": 39.59,
+          "end": 39.99,
+          "start_frame": 1188,
+          "end_frame": 1200
+        },
+        {
+          "word": "to",
+          "start": 39.99,
+          "end": 40.16,
+          "start_frame": 1200,
+          "end_frame": 1205
+        },
+        {
+          "word": "accept",
+          "start": 40.16,
+          "end": 40.77,
+          "start_frame": 1205,
+          "end_frame": 1223
+        }
+      ]
+    },
+    {
+      "scene": 10,
+      "text": "But threaten someone's freedom, and reactance may make them push back.",
+      "start": 41.09,
+      "end": 45.2,
+      "start_frame": 1233,
+      "end_frame": 1356,
+      "window": [
+        45.0,
+        50.0
+      ],
+      "words": [
+        {
+          "word": "but",
+          "start": 41.09,
+          "end": 41.23,
+          "start_frame": 1233,
+          "end_frame": 1237
+        },
+        {
+          "word": "threaten",
+          "start": 41.23,
+          "end": 41.65,
+          "start_frame": 1237,
+          "end_frame": 1250
+        },
+        {
+          "word": "someone's",
+          "start": 41.65,
+          "end": 42.11,
+          "start_frame": 1250,
+          "end_frame": 1263
+        },
+        {
+          "word": "freedom",
+          "start": 42.11,
+          "end": 42.69,
+          "start_frame": 1263,
+          "end_frame": 1281
+        },
+        {
+          "word": "and",
+          "start": 42.93,
+          "end": 43.07,
+          "start_frame": 1288,
+          "end_frame": 1292
+        },
+        {
+          "word": "reactance",
+          "start": 43.07,
+          "end": 43.82,
+          "start_frame": 1292,
+          "end_frame": 1315
+        },
+        {
+          "word": "may",
+          "start": 43.82,
+          "end": 44.11,
+          "start_frame": 1315,
+          "end_frame": 1323
+        },
+        {
+          "word": "make",
+          "start": 44.11,
+          "end": 44.36,
+          "start_frame": 1323,
+          "end_frame": 1331
+        },
+        {
+          "word": "them",
+          "start": 44.36,
+          "end": 44.52,
+          "start_frame": 1331,
+          "end_frame": 1336
+        },
+        {
+          "word": "push",
+          "start": 44.52,
+          "end": 44.76,
+          "start_frame": 1336,
+          "end_frame": 1343
+        },
+        {
+          "word": "back",
+          "start": 44.76,
+          "end": 45.2,
+          "start_frame": 1343,
+          "end_frame": 1356
+        }
+      ]
+    },
+    {
+      "scene": 11,
+      "text": "Sometimes, controlling your choices starts by making you feel you have none.",
+      "start": 45.64,
+      "end": 50.28,
+      "start_frame": 1369,
+      "end_frame": 1508,
+      "window": [
+        50.0,
+        55.0
+      ],
+      "words": [
+        {
+          "word": "sometimes",
+          "start": 45.64,
+          "end": 46.55,
+          "start_frame": 1369,
+          "end_frame": 1396
+        },
+        {
+          "word": "controlling",
+          "start": 46.55,
+          "end": 47.14,
+          "start_frame": 1396,
+          "end_frame": 1414
+        },
+        {
+          "word": "your",
+          "start": 47.14,
+          "end": 47.27,
+          "start_frame": 1414,
+          "end_frame": 1418
+        },
+        {
+          "word": "choices",
+          "start": 47.27,
+          "end": 48.01,
+          "start_frame": 1418,
+          "end_frame": 1440
+        },
+        {
+          "word": "starts",
+          "start": 48.01,
+          "end": 48.44,
+          "start_frame": 1440,
+          "end_frame": 1453
+        },
+        {
+          "word": "by",
+          "start": 48.44,
+          "end": 48.57,
+          "start_frame": 1453,
+          "end_frame": 1457
+        },
+        {
+          "word": "making",
+          "start": 48.57,
+          "end": 48.95,
+          "start_frame": 1457,
+          "end_frame": 1468
+        },
+        {
+          "word": "you",
+          "start": 48.95,
+          "end": 49.06,
+          "start_frame": 1468,
+          "end_frame": 1472
+        },
+        {
+          "word": "feel",
+          "start": 49.06,
+          "end": 49.42,
+          "start_frame": 1472,
+          "end_frame": 1483
+        },
+        {
+          "word": "you",
+          "start": 49.42,
+          "end": 49.57,
+          "start_frame": 1483,
+          "end_frame": 1487
+        },
+        {
+          "word": "have",
+          "start": 49.57,
+          "end": 49.95,
+          "start_frame": 1487,
+          "end_frame": 1498
+        },
+        {
+          "word": "none",
+          "start": 49.95,
+          "end": 50.28,
+          "start_frame": 1498,
+          "end_frame": 1508
+        }
+      ]
+    }
+  ]
+}
