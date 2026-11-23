@@ -11,7 +11,7 @@ import subprocess
 import warnings
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterator
+from typing import Callable, Iterator
 
 import numpy as np
 from PIL import Image
@@ -57,6 +57,7 @@ class CaptionEvent:
     end: int            # scene-local last frame (exclusive)
     kind: str = "caption"        # "caption" (66px) or "headline" (104px)
     position: str = "lower"      # lower | center | upper
+    word_starts: list[int] | None = None   # scene-local frame each word appears (kinetic reveal); None = whole group
 
 
 @dataclass
@@ -65,6 +66,7 @@ class Scene:
     image_obj: Image.Image | None = None   # alternative to `image`, e.g. a temp test image
     camera: Camera | None = None           # None -> camera_defaults from config
     captions: list[CaptionEvent] = field(default_factory=list)
+    source: Callable[[float, int], Image.Image] | None = None   # per-frame world image (procedural scenes)
     frames: int | None = None              # None -> config scene_frames (150)
     fade_in: int | None = None
     fade_out: int | None = None
@@ -227,25 +229,74 @@ class SceneRenderer:
             hwc /= len(offs)
         return np.ascontiguousarray(hwc.transpose(2, 0, 1)) * np.float32(1 / 255.0)   # planar (3,H,W) 0..1
 
+    @staticmethod
+    def _planar(hwc: np.ndarray) -> np.ndarray:
+        return np.ascontiguousarray(hwc.transpose(2, 0, 1)) * np.float32(1 / 255.0)
+
+    def dynamic_visual(self, scene: Scene, cam: Camera, i: int, n: int) -> np.ndarray:
+        """Procedural source: average a few sub-frame renders (temporal motion blur), then one camera sample."""
+        mb = self.cfg.motion_blur
+        k = mb["dynamic_samples"]
+        offs = [0.0] if k <= 1 else list((np.arange(k) / (k - 1) - 0.5) * mb["dynamic_shutter"])
+        acc = None
+        for o in offs:
+            a = np.asarray(scene.source(i + o, n).convert("RGB"), np.float32)
+            acc = a if acc is None else acc + a
+        img = Image.fromarray((acc / len(offs) + 0.5).astype(np.uint8))
+        return self._planar(self._sample(img, cam, i / max(n - 1, 1)))
+
     def iter_frames(self, scene: Scene, test_mode: bool = False) -> Iterator[np.ndarray]:
         n = scene.frames if scene.frames is not None else self.cfg.scene_frames
         if n != self.cfg.scene_frames and not test_mode:
             raise ValueError(f"scene must be exactly {self.cfg.scene_frames} frames, got {n}")
-        img = self.load_image(scene)
+        img = None if scene.source else self.load_image(scene)
         cam = scene.camera or self.default_camera
         overlays: list[tuple[CaptionEvent, Overlay]] = []
+        kinetic: list[tuple[CaptionEvent, list]] = []
+        rv = self.cfg.captions["reveal"]
         for ev in scene.captions:
             if not (0 <= ev.start < ev.end <= n):
                 raise ValueError(f"caption event {ev.start}-{ev.end} outside scene of {n} frames")
-            overlays.append((ev, self.captions.build(ev.group, ev.kind, ev.position)))
+            if ev.word_starts is None:
+                overlays.append((ev, self.captions.build(ev.group, ev.kind, ev.position)))
+                continue
+            if len(ev.word_starts) != len(ev.group.words):
+                raise ValueError("word_starts must have one frame per word")
+            hit = self.captions.highlighted_indices(ev.group)
+            words = []
+            for w, ws in enumerate(ev.word_starts):
+                ovw = self.captions.build(ev.group, ev.kind, ev.position, only=frozenset([w]))
+                if ovw.ink_bbox[3] + rv["rise_px"] > self.cfg.safe_rect[3]:
+                    raise ValueError("kinetic rise would push text below the safe margin")
+                glow = self.captions.build(ev.group, ev.kind, ev.position, glow_idx=w) if w in hit else None
+                words.append((ws, ovw, glow))
+            kinetic.append((ev, words))
 
         for i in range(n):
-            x = self.visual_frame(img, cam, i, n)
+            if scene.source:
+                x = self.dynamic_visual(scene, cam, i, n)
+            else:
+                x = self.visual_frame(img, cam, i, n)
             x = self.grade.apply(x, i)
             x = self.transitions.apply(x, i, n, scene.fade_in, scene.fade_out)
             for ev, ov in overlays:
                 if ev.start <= i < ev.end:
                     self.captions.composite(x, ov, self.captions.event_opacity(i - ev.start, ev.end - ev.start))
+            for ev, words in kinetic:
+                if not (ev.start <= i < ev.end):
+                    continue
+                out = min(1.0, (ev.end - i) / max(self.cfg.captions["fade_frames"], 1))
+                for ws, ovw, glow in words:
+                    lf = i - ws
+                    if lf < 0:
+                        continue
+                    t = min(1.0, (lf + 1) / rv["frames"])
+                    t = t * t * (3 - 2 * t)
+                    if glow is not None:
+                        g = rv["glow_hold"] + (rv["glow_peak"] - rv["glow_hold"]) * max(0.0, 1 - lf / 24)
+                        g += 0.05 * np.sin(lf * 0.3) * (lf > 24)
+                        self.captions.composite(x, glow, g * t * out)
+                    self.captions.composite(x, ovw, t * out, dy=int(round(rv["rise_px"] * (1 - t))))
             yield (np.clip(x, 0, 1).transpose(1, 2, 0) * 255 + 0.5).astype(np.uint8, order="C")
 
     def render_scene(self, scene: Scene, writer: FFmpegWriter, test_mode: bool = False) -> int:

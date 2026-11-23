@@ -105,8 +105,14 @@ class CaptionRenderer:
         return lines
 
     # ------------------------------------------------------------------ build
-    def build(self, group: CaptionGroup, kind: str = "caption", position: str = "lower") -> Overlay:
-        key = (group, kind, position)
+    def build(self, group: CaptionGroup, kind: str = "caption", position: str = "lower",
+              only: frozenset | None = None, glow_idx: int | None = None) -> Overlay:
+        """Layout is always computed from ALL words so per-word overlays line up exactly.
+        `only`: draw just these word indices (kinetic reveal). `glow_idx`: instead return a soft
+        red glow behind that single word."""
+        if glow_idx is not None:
+            only = frozenset([glow_idx])
+        key = (group, kind, position, only, glow_idx)
         if key in self._cache:
             return self._cache[key]
 
@@ -147,7 +153,8 @@ class CaptionRenderer:
                 x = (cw - w) / 2
                 for i in ln:
                     colour = mono if mono is not None else self.colors["highlight" if i in hit else "normal"]
-                    draw.text((x, y), words[i], font=font, fill=colour, anchor="ls")
+                    if only is None or i in only:
+                        draw.text((x, y), words[i], font=font, fill=colour, anchor="ls")
                     x += font.getlength(words[i]) + font.getlength(" ")
                 y += lh
 
@@ -158,6 +165,13 @@ class CaptionRenderer:
         mask = Image.new("L", (cw, ch), 0)
         draw_text(ImageDraw.Draw(mask), 255)
         sh = self.style["shadow"]
+
+        if glow_idx is not None:   # soft red glow behind one word (no text, no shadow)
+            rv = self.style["reveal"]
+            g = np.asarray(mask.filter(ImageFilter.GaussianBlur(rv["glow_sigma"])), np.float32) / 255.0
+            g = np.clip(g * 2.2, 0, 1)
+            rgb = np.zeros((ch, cw, 3), np.float32) + np.asarray(self.colors["highlight"], np.float32) / 255.0
+            return self._finish(group, key, cw, ch, position, np.ascontiguousarray(rgb.transpose(2, 0, 1)), g, px, wrapped, words)
 
         def shadow_alpha(blur, offset, opacity):
             m = Image.new("L", (cw, ch), 0)
@@ -174,6 +188,11 @@ class CaptionRenderer:
         shadow_img = Image.fromarray((shadow * 255 + 0.5).astype(np.uint8), "RGBA")
         out = np.asarray(Image.alpha_composite(shadow_img, text_img), np.float32) / 255.0
 
+        out_rgb = np.ascontiguousarray(out[..., :3].transpose(2, 0, 1))
+        return self._finish(group, key, cw, ch, position, out_rgb, out[..., 3], px, wrapped, words)
+
+    def _finish(self, group, key, cw, ch, position, rgb_planar, alpha, px, wrapped, words) -> Overlay:
+        left, top, right, bottom = self.cfg.safe_rect
         # Position inside the safe rectangle.
         x0 = (self.cfg.width - cw) // 2
         if position == "lower":
@@ -185,10 +204,9 @@ class CaptionRenderer:
         else:
             raise ValueError(f"unknown position {position!r}")
 
-        alpha = out[..., 3]
         ys, xs = np.where(alpha > self.ALPHA_THRESHOLD)
         ink = (x0 + int(xs.min()), y0 + int(ys.min()), x0 + int(xs.max()) + 1, y0 + int(ys.max()) + 1)
-        ov = Overlay(x0, y0, np.ascontiguousarray(out[..., :3].transpose(2, 0, 1)), alpha.copy(), px, [" ".join(words[i] for i in ln) for ln in wrapped], ink)
+        ov = Overlay(x0, y0, rgb_planar, alpha.copy(), px, [" ".join(words[i] for i in ln) for ln in wrapped], ink)
         self.check_safe(ov)
         self._cache[key] = ov
         return ov
@@ -200,12 +218,16 @@ class CaptionRenderer:
             raise ValueError(f"text outside safe margins: ink {ov.ink_bbox} vs safe {(l, t, r, b)}")
 
     # -------------------------------------------------------------- compositing
-    def composite(self, frame: np.ndarray, ov: Overlay, opacity: float = 1.0) -> np.ndarray:
-        """Blend overlay onto planar float32 (3,H,W) frame in place and return it."""
+    def composite(self, frame: np.ndarray, ov: Overlay, opacity: float = 1.0, dy: int = 0) -> np.ndarray:
+        """Blend overlay onto planar float32 (3,H,W) frame in place and return it.
+        `dy` shifts the overlay vertically (kinetic rise); it is clipped to the frame."""
         if opacity <= 0:
             return frame
         h, w = ov.alpha.shape
-        region = frame[:, ov.y0:ov.y0 + h, ov.x0:ov.x0 + w]
+        y0 = ov.y0 + dy
+        if y0 < 0 or y0 + h > frame.shape[1]:
+            raise ValueError("caption offset leaves the frame")
+        region = frame[:, y0:y0 + h, ov.x0:ov.x0 + w]
         a = ov.alpha * opacity
         region *= 1.0 - a
         region += ov.rgb * a

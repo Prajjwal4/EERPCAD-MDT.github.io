@@ -17,7 +17,7 @@
     "pixel_format": "yuv420p",
     "container": "mp4"
   },
-  "status": "production_approach_local_code",
+  "status": "stickman_s01_built_awaiting_review",
   "visual_identity": {
     "background": "#09090D",
     "secondary_background": "#15151C",
@@ -103,63 +103,63 @@
     },
     "visual_01.png": {
       "duration": 5,
-      "subject": "Human silhouette in dark room",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "subject": "Stickman standing in a dark room under red light; wall shadow behind him acts on its own (keyframe of scene S01)",
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_02.png": {
       "duration": 5,
       "subject": "Close-up human eye",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_03.png": {
       "duration": 5,
       "subject": "Isolated person in dark corridor",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_04.png": {
       "duration": 5,
       "subject": "Person sitting alone in dark environment",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_05.png": {
       "duration": 5,
       "subject": "Two people subtly mirroring body language",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_06.png": {
       "duration": 5,
       "subject": "Two people interacting in cinematic environment",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_07.png": {
       "duration": 5,
       "subject": "Limited object under dramatic spotlight",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_08.png": {
       "duration": 5,
       "subject": "Countdown timer and disappearing opportunities",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_09.png": {
       "duration": 5,
       "subject": "Hand reaching towards a door",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_10.png": {
       "duration": 5,
       "subject": "Small request followed by larger request visual metaphor",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_11.png": {
       "duration": 5,
       "subject": "Person resisting an invisible barrier",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     },
     "visual_12.png": {
       "duration": 5,
       "subject": "Mysterious human silhouette fading into darkness",
-      "type": "Original procedural composition (Python/NumPy/Pillow); not photographic, not AI-generated"
+      "type": "Original procedural stickman composition keyframe (Python/NumPy/Pillow); not photographic, not AI-generated"
     }
   },
   "outputs": {
@@ -212,7 +212,10 @@
     },
     "motion_blur": {
       "samples": 4,
-      "shutter": 0.5
+      "shutter": 0.5,
+      "dynamic_samples": 2,
+      "dynamic_shutter": 0.5,
+      "min_pixels_per_frame": 1.5
     },
     "transitions": {
       "fade_in_frames": 9,
@@ -238,6 +241,13 @@
           3
         ],
         "opacity_tight": 0.9
+      },
+      "reveal": {
+        "frames": 5,
+        "rise_px": 12,
+        "glow_sigma": 10,
+        "glow_peak": 0.85,
+        "glow_hold": 0.22
       }
     },
     "audio_mix": {
@@ -247,6 +257,29 @@
       "duck_attack_ms": 15,
       "duck_release_ms": 350,
       "limiter_ceiling_dbfs": -1.5
+    },
+    "stickman": {
+      "_note": "One character design for the whole video. Lengths are in final 1080x1920 pixels.",
+      "head_r": 62,
+      "torso": 220,
+      "neck": 30,
+      "thigh": 175,
+      "shin": 175,
+      "upper_arm": 125,
+      "forearm": 120,
+      "body_w": 30,
+      "limb_w": 24,
+      "hand_r": 15,
+      "foot": 30,
+      "outline_px": 5,
+      "shoulder_half": 30,
+      "hip_half": 18,
+      "body_color": "#050507",
+      "outline_color": "secondary_text",
+      "face_color": "primary_text",
+      "rim_color": "accent_red",
+      "supersample": 2,
+      "world_scale": 1.2
     }
   },
   "production": {
@@ -275,6 +308,7 @@
     ],
     "permitted_services": {
       "ElevenLabs": "voiceover narration only, and only via the user-supplied file; no image generation, no speech-to-text, no API calls from this project"
-    }
+    },
+    "visual_style": "DARK CINEMATIC STICKMAN PSYCHOLOGY STORYTELLING (approved; replaces the realistic-silhouette direction)"
   }
 }
