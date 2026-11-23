@@ -54,12 +54,16 @@ def verify_caption_sync(video: Path, events, cfg: Config, tolerance: int = 4) ->
             else:          # white word
                 ink = (reg.min(axis=3) > 120).sum(axis=(1, 2))
             thr = max(40, 0.08 * ink.max())
-            vis = np.where(ink > thr)[0]
-            vis = vis[vis >= max(ws - 2, 0)] if len(vis) else vis
-            onset = int(vis[0]) if len(vis) else None
-            good = onset is not None and ws <= onset <= ws + tolerance
+            # Another group (the outgoing one) may overlap this word's box until THIS group's start frame, so
+            # only frames >= ev.start are attributed to this word. Ink inside the box between ev.start and the
+            # word's aligned start would be a genuine early appearance.
+            own = np.where(ink > thr)[0]
+            own = own[own >= ev.start]
+            onset = int(own[0]) if len(own) else None
+            early = onset is not None and onset < ws
+            good = onset is not None and (not early) and onset <= ws + tolerance
             ok &= good
-            rows.append((w, ws, onset, "OK" if good else "CHECK"))
+            rows.append((w, ws, onset, "OK" if good else ("EARLY" if early else "CHECK")))
     return {"ok": ok, "rows": rows, "frames": len(fr),
             "empty_before_first_word": int(((fr[:, :, :, :].min(axis=3) > 120).sum(axis=(1, 2))[:max(min(e.word_starts[0] for e in events if e.word_starts[0] > -100) - 1, 0)]).max(initial=0))}
 

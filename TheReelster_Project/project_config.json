@@ -17,7 +17,7 @@
     "pixel_format": "yuv420p",
     "container": "mp4"
   },
-  "status": "s01_retimed_to_real_voiceover_awaiting_review",
+  "status": "s02_built_awaiting_review",
   "visual_identity": {
     "background": "#09090D",
     "secondary_background": "#15151C",
