@@ -1,102 +1,27 @@
 {
   "voiceover": "assets/audio/voiceover_01.wav",
-  "duration": 50.521,
+  "duration": 60.0,
   "fps": 30,
-  "method": "PocketSphinx forced alignment of the approved script (local); cross-checked with FFmpeg silencedetect",
-  "silences": [
-    {
-      "start": 3.24946,
-      "end": 3.87243
-    },
-    {
-      "start": 4.35546,
-      "end": 4.70458
-    },
-    {
-      "start": 5.80016,
-      "end": 6.27533
-    },
-    {
-      "start": 9.12458,
-      "end": 9.65596
-    },
-    {
-      "start": 10.8509,
-      "end": 11.2725
-    },
-    {
-      "start": 12.8731,
-      "end": 13.446
-    },
-    {
-      "start": 13.9368,
-      "end": 14.2986
-    },
-    {
-      "start": 14.8771,
-      "end": 15.3871
-    },
-    {
-      "start": 18.9475,
-      "end": 19.3425
-    },
-    {
-      "start": 22.5972,
-      "end": 23.1479
-    },
-    {
-      "start": 24.4512,
-      "end": 24.9124
-    },
-    {
-      "start": 28.217,
-      "end": 28.6169
-    },
-    {
-      "start": 30.1674,
-      "end": 30.3716
-    },
-    {
-      "start": 31.4448,
-      "end": 31.6252
-    },
-    {
-      "start": 33.0869,
-      "end": 33.5475
-    },
-    {
-      "start": 36.567,
-      "end": 37.0007
-    },
-    {
-      "start": 40.7064,
-      "end": 41.1507
-    },
-    {
-      "start": 42.6553,
-      "end": 42.9282
-    },
-    {
-      "start": 45.168,
-      "end": 45.6515
-    },
-    {
-      "start": 46.4127,
-      "end": 46.6048
-    },
-    {
-      "start": 50.2684,
-      "end": 50.5208
-    }
-  ],
+  "voice": "Michael C. Vincent - Suspenseful Storyteller (ElevenLabs eleven_v4)",
+  "method": "per-line ElevenLabs takes; per-clip PocketSphinx forced alignment (local); lines placed on the 5 s scene grid",
+  "loudness": {
+    "I": -16.0,
+    "TP": -2.15,
+    "LRA": 5.3,
+    "thresh": -26.59,
+    "offset": 0.16,
+    "sample_peak": -2.4
+  },
   "lines": [
     {
       "scene": 1,
       "text": "Your mind has weaknesses you probably don't even know about.",
-      "start": 0.0,
-      "end": 3.29,
-      "start_frame": 0,
-      "end_frame": 99,
+      "take": "s01_take2.mp3",
+      "gain_db": 0.89,
+      "start": 0.15,
+      "end": 3.667,
+      "start_frame": 4,
+      "end_frame": 110,
       "window": [
         0.0,
         5.0
@@ -104,83 +29,85 @@
       "words": [
         {
           "word": "your",
-          "start": 0.0,
-          "end": 0.23,
-          "start_frame": 0,
-          "end_frame": 7
+          "start": 0.15,
+          "end": 0.34,
+          "start_frame": 4,
+          "end_frame": 10
         },
         {
           "word": "mind",
-          "start": 0.23,
-          "end": 0.55,
-          "start_frame": 7,
-          "end_frame": 16
+          "start": 0.34,
+          "end": 0.72,
+          "start_frame": 10,
+          "end_frame": 22
         },
         {
           "word": "has",
-          "start": 0.55,
-          "end": 0.79,
-          "start_frame": 16,
-          "end_frame": 24
+          "start": 0.72,
+          "end": 0.98,
+          "start_frame": 22,
+          "end_frame": 29
         },
         {
           "word": "weaknesses",
-          "start": 0.79,
-          "end": 1.5,
-          "start_frame": 24,
-          "end_frame": 45
+          "start": 0.98,
+          "end": 1.71,
+          "start_frame": 29,
+          "end_frame": 51
         },
         {
           "word": "you",
-          "start": 1.5,
-          "end": 1.62,
-          "start_frame": 45,
-          "end_frame": 49
+          "start": 1.71,
+          "end": 1.8,
+          "start_frame": 51,
+          "end_frame": 54
         },
         {
           "word": "probably",
-          "start": 1.62,
-          "end": 2.26,
-          "start_frame": 49,
-          "end_frame": 68
-        },
-        {
-          "word": "don't",
-          "start": 2.26,
-          "end": 2.48,
-          "start_frame": 68,
+          "start": 1.8,
+          "end": 2.46,
+          "start_frame": 54,
           "end_frame": 74
         },
         {
-          "word": "even",
-          "start": 2.48,
-          "end": 2.68,
+          "word": "don't",
+          "start": 2.46,
+          "end": 2.69,
           "start_frame": 74,
-          "end_frame": 80
+          "end_frame": 81
         },
         {
-          "word": "know",
-          "start": 2.68,
-          "end": 2.95,
-          "start_frame": 80,
+          "word": "even",
+          "start": 2.69,
+          "end": 2.92,
+          "start_frame": 81,
           "end_frame": 88
         },
         {
-          "word": "about",
-          "start": 2.95,
-          "end": 3.29,
+          "word": "know",
+          "start": 2.92,
+          "end": 3.21,
           "start_frame": 88,
-          "end_frame": 99
+          "end_frame": 96
+        },
+        {
+          "word": "about",
+          "start": 3.21,
+          "end": 3.66,
+          "start_frame": 96,
+          "end_frame": 110
         }
       ]
     },
     {
       "scene": 2,
       "text": "First, social exclusion: being ignored can threaten our sense of belonging.",
-      "start": 3.84,
-      "end": 9.15,
-      "start_frame": 115,
-      "end_frame": 274,
+      "take": "s02_take2.mp3",
+      "gain_db": -0.71,
+      "start": 5.15,
+      "end": 10.618,
+      "start_frame": 154,
+      "end_frame": 319,
       "window": [
         5.0,
         10.0
@@ -188,90 +115,92 @@
       "words": [
         {
           "word": "first",
-          "start": 3.84,
-          "end": 4.39,
-          "start_frame": 115,
-          "end_frame": 132
+          "start": 5.15,
+          "end": 5.71,
+          "start_frame": 154,
+          "end_frame": 171
         },
         {
           "word": "social",
-          "start": 4.67,
-          "end": 5.2,
-          "start_frame": 140,
-          "end_frame": 156
+          "start": 6.03,
+          "end": 6.52,
+          "start_frame": 181,
+          "end_frame": 196
         },
         {
           "word": "exclusion",
-          "start": 5.2,
-          "end": 5.81,
-          "start_frame": 156,
-          "end_frame": 174
+          "start": 6.52,
+          "end": 7.27,
+          "start_frame": 196,
+          "end_frame": 218
         },
         {
           "word": "being",
-          "start": 6.28,
-          "end": 6.58,
-          "start_frame": 188,
-          "end_frame": 197
+          "start": 7.82,
+          "end": 8.13,
+          "start_frame": 235,
+          "end_frame": 244
         },
         {
           "word": "ignored",
-          "start": 6.58,
-          "end": 7.19,
-          "start_frame": 197,
-          "end_frame": 216
+          "start": 8.13,
+          "end": 8.67,
+          "start_frame": 244,
+          "end_frame": 260
         },
         {
           "word": "can",
-          "start": 7.19,
-          "end": 7.38,
-          "start_frame": 216,
-          "end_frame": 221
+          "start": 8.67,
+          "end": 8.85,
+          "start_frame": 260,
+          "end_frame": 266
         },
         {
           "word": "threaten",
-          "start": 7.38,
-          "end": 7.9,
-          "start_frame": 221,
-          "end_frame": 237
+          "start": 8.85,
+          "end": 9.34,
+          "start_frame": 266,
+          "end_frame": 280
         },
         {
           "word": "our",
-          "start": 7.9,
-          "end": 8.03,
-          "start_frame": 237,
-          "end_frame": 241
+          "start": 9.34,
+          "end": 9.47,
+          "start_frame": 280,
+          "end_frame": 284
         },
         {
           "word": "sense",
-          "start": 8.03,
-          "end": 8.37,
-          "start_frame": 241,
-          "end_frame": 251
+          "start": 9.47,
+          "end": 9.8,
+          "start_frame": 284,
+          "end_frame": 294
         },
         {
           "word": "of",
-          "start": 8.37,
-          "end": 8.48,
-          "start_frame": 251,
-          "end_frame": 254
+          "start": 9.8,
+          "end": 9.9,
+          "start_frame": 294,
+          "end_frame": 297
         },
         {
           "word": "belonging",
-          "start": 8.48,
-          "end": 9.15,
-          "start_frame": 254,
-          "end_frame": 274
+          "start": 9.9,
+          "end": 10.61,
+          "start_frame": 297,
+          "end_frame": 318
         }
       ]
     },
     {
       "scene": 3,
       "text": "That feeling can hurt, even when no one says a word.",
-      "start": 9.63,
-      "end": 12.92,
-      "start_frame": 289,
-      "end_frame": 388,
+      "take": "s03_take2.mp3",
+      "gain_db": 1.24,
+      "start": 10.918,
+      "end": 14.543,
+      "start_frame": 328,
+      "end_frame": 436,
       "window": [
         10.0,
         15.0
@@ -279,90 +208,92 @@
       "words": [
         {
           "word": "that",
-          "start": 9.63,
-          "end": 9.77,
-          "start_frame": 289,
-          "end_frame": 293
+          "start": 10.918,
+          "end": 11.168,
+          "start_frame": 328,
+          "end_frame": 335
         },
         {
           "word": "feeling",
-          "start": 9.77,
-          "end": 10.16,
-          "start_frame": 293,
-          "end_frame": 305
+          "start": 11.168,
+          "end": 11.578,
+          "start_frame": 335,
+          "end_frame": 347
         },
         {
           "word": "can",
-          "start": 10.16,
-          "end": 10.31,
-          "start_frame": 305,
-          "end_frame": 309
-        },
-        {
-          "word": "hurt",
-          "start": 10.31,
-          "end": 10.91,
-          "start_frame": 309,
-          "end_frame": 327
-        },
-        {
-          "word": "even",
-          "start": 11.23,
-          "end": 11.53,
-          "start_frame": 337,
-          "end_frame": 346
-        },
-        {
-          "word": "when",
-          "start": 11.53,
-          "end": 11.72,
-          "start_frame": 346,
+          "start": 11.578,
+          "end": 11.738,
+          "start_frame": 347,
           "end_frame": 352
         },
         {
-          "word": "no",
-          "start": 11.72,
-          "end": 11.95,
+          "word": "hurt",
+          "start": 11.738,
+          "end": 12.298,
           "start_frame": 352,
-          "end_frame": 358
+          "end_frame": 369
+        },
+        {
+          "word": "even",
+          "start": 12.808,
+          "end": 13.078,
+          "start_frame": 384,
+          "end_frame": 392
+        },
+        {
+          "word": "when",
+          "start": 13.078,
+          "end": 13.288,
+          "start_frame": 392,
+          "end_frame": 399
+        },
+        {
+          "word": "no",
+          "start": 13.288,
+          "end": 13.528,
+          "start_frame": 399,
+          "end_frame": 406
         },
         {
           "word": "one",
-          "start": 11.95,
-          "end": 12.14,
-          "start_frame": 358,
-          "end_frame": 364
+          "start": 13.528,
+          "end": 13.738,
+          "start_frame": 406,
+          "end_frame": 412
         },
         {
           "word": "says",
-          "start": 12.14,
-          "end": 12.39,
-          "start_frame": 364,
-          "end_frame": 372
+          "start": 13.738,
+          "end": 13.988,
+          "start_frame": 412,
+          "end_frame": 420
         },
         {
           "word": "a",
-          "start": 12.39,
-          "end": 12.43,
-          "start_frame": 372,
-          "end_frame": 373
+          "start": 13.988,
+          "end": 14.028,
+          "start_frame": 420,
+          "end_frame": 421
         },
         {
           "word": "word",
-          "start": 12.43,
-          "end": 12.92,
-          "start_frame": 373,
-          "end_frame": 388
+          "start": 14.028,
+          "end": 14.538,
+          "start_frame": 421,
+          "end_frame": 436
         }
       ]
     },
     {
       "scene": 4,
       "text": "Next, mirroring: people often unconsciously copy gestures and expressions.",
-      "start": 13.43,
-      "end": 18.99,
-      "start_frame": 403,
-      "end_frame": 570,
+      "take": "s04_take2.mp3",
+      "gain_db": 0.7,
+      "start": 15.15,
+      "end": 20.935,
+      "start_frame": 454,
+      "end_frame": 628,
       "window": [
         15.0,
         20.0
@@ -370,76 +301,78 @@
       "words": [
         {
           "word": "next",
-          "start": 13.43,
-          "end": 13.98,
-          "start_frame": 403,
-          "end_frame": 419
+          "start": 15.15,
+          "end": 15.71,
+          "start_frame": 454,
+          "end_frame": 471
         },
         {
           "word": "mirroring",
-          "start": 14.26,
-          "end": 14.89,
-          "start_frame": 428,
-          "end_frame": 447
+          "start": 16.06,
+          "end": 16.74,
+          "start_frame": 482,
+          "end_frame": 502
         },
         {
           "word": "people",
-          "start": 15.32,
-          "end": 15.65,
-          "start_frame": 460,
-          "end_frame": 470
+          "start": 17.23,
+          "end": 17.6,
+          "start_frame": 517,
+          "end_frame": 528
         },
         {
           "word": "often",
-          "start": 15.65,
-          "end": 16.05,
-          "start_frame": 470,
-          "end_frame": 482
+          "start": 17.6,
+          "end": 17.92,
+          "start_frame": 528,
+          "end_frame": 538
         },
         {
           "word": "unconsciously",
-          "start": 16.05,
-          "end": 16.94,
-          "start_frame": 482,
-          "end_frame": 508
+          "start": 17.92,
+          "end": 18.82,
+          "start_frame": 538,
+          "end_frame": 565
         },
         {
           "word": "copy",
-          "start": 16.94,
-          "end": 17.37,
-          "start_frame": 508,
-          "end_frame": 521
+          "start": 18.82,
+          "end": 19.27,
+          "start_frame": 565,
+          "end_frame": 578
         },
         {
           "word": "gestures",
-          "start": 17.37,
-          "end": 18.05,
-          "start_frame": 521,
-          "end_frame": 542
+          "start": 19.27,
+          "end": 19.97,
+          "start_frame": 578,
+          "end_frame": 599
         },
         {
           "word": "and",
-          "start": 18.05,
-          "end": 18.14,
-          "start_frame": 542,
-          "end_frame": 544
+          "start": 19.97,
+          "end": 20.09,
+          "start_frame": 599,
+          "end_frame": 603
         },
         {
           "word": "expressions",
-          "start": 18.14,
-          "end": 18.99,
-          "start_frame": 544,
-          "end_frame": 570
+          "start": 20.09,
+          "end": 20.92,
+          "start_frame": 603,
+          "end_frame": 628
         }
       ]
     },
     {
       "scene": 5,
       "text": "This Chameleon Effect can help interactions feel more natural.",
-      "start": 19.32,
-      "end": 22.65,
-      "start_frame": 580,
-      "end_frame": 680,
+      "take": "s05_take1.mp3",
+      "gain_db": -0.15,
+      "start": 21.235,
+      "end": 24.599,
+      "start_frame": 637,
+      "end_frame": 738,
       "window": [
         20.0,
         25.0
@@ -447,76 +380,78 @@
       "words": [
         {
           "word": "this",
-          "start": 19.32,
-          "end": 19.47,
-          "start_frame": 580,
-          "end_frame": 584
+          "start": 21.235,
+          "end": 21.475,
+          "start_frame": 637,
+          "end_frame": 644
         },
         {
           "word": "chameleon",
-          "start": 19.47,
-          "end": 20.04,
-          "start_frame": 584,
-          "end_frame": 601
+          "start": 21.475,
+          "end": 21.995,
+          "start_frame": 644,
+          "end_frame": 660
         },
         {
           "word": "effect",
-          "start": 20.04,
-          "end": 20.5,
-          "start_frame": 601,
-          "end_frame": 615
+          "start": 21.995,
+          "end": 22.425,
+          "start_frame": 660,
+          "end_frame": 673
         },
         {
           "word": "can",
-          "start": 20.5,
-          "end": 20.65,
-          "start_frame": 615,
-          "end_frame": 620
+          "start": 22.425,
+          "end": 22.565,
+          "start_frame": 673,
+          "end_frame": 677
         },
         {
           "word": "help",
-          "start": 20.65,
-          "end": 20.91,
-          "start_frame": 620,
-          "end_frame": 627
+          "start": 22.565,
+          "end": 22.835,
+          "start_frame": 677,
+          "end_frame": 685
         },
         {
           "word": "interactions",
-          "start": 20.91,
-          "end": 21.63,
-          "start_frame": 627,
-          "end_frame": 649
+          "start": 22.835,
+          "end": 23.525,
+          "start_frame": 685,
+          "end_frame": 706
         },
         {
           "word": "feel",
-          "start": 21.63,
-          "end": 21.89,
-          "start_frame": 649,
-          "end_frame": 657
+          "start": 23.525,
+          "end": 23.795,
+          "start_frame": 706,
+          "end_frame": 714
         },
         {
           "word": "more",
-          "start": 21.89,
-          "end": 22.09,
-          "start_frame": 657,
-          "end_frame": 663
+          "start": 23.795,
+          "end": 23.955,
+          "start_frame": 714,
+          "end_frame": 719
         },
         {
           "word": "natural",
-          "start": 22.09,
-          "end": 22.65,
-          "start_frame": 663,
-          "end_frame": 680
+          "start": 23.955,
+          "end": 24.595,
+          "start_frame": 719,
+          "end_frame": 738
         }
       ]
     },
     {
       "scene": 6,
       "text": "Then there's scarcity: limited availability can make things seem more desirable.",
-      "start": 23.19,
-      "end": 28.28,
-      "start_frame": 696,
-      "end_frame": 848,
+      "take": "s06_take2.mp3",
+      "gain_db": -0.71,
+      "start": 25.15,
+      "end": 30.351,
+      "start_frame": 754,
+      "end_frame": 911,
       "window": [
         25.0,
         30.0
@@ -524,90 +459,92 @@
       "words": [
         {
           "word": "then",
-          "start": 23.19,
-          "end": 23.57,
-          "start_frame": 696,
-          "end_frame": 707
+          "start": 25.15,
+          "end": 25.49,
+          "start_frame": 754,
+          "end_frame": 765
         },
         {
           "word": "there's",
-          "start": 23.57,
-          "end": 23.8,
-          "start_frame": 707,
-          "end_frame": 714
+          "start": 25.49,
+          "end": 25.74,
+          "start_frame": 765,
+          "end_frame": 772
         },
         {
           "word": "scarcity",
-          "start": 23.8,
-          "end": 24.54,
-          "start_frame": 714,
-          "end_frame": 736
+          "start": 25.74,
+          "end": 26.51,
+          "start_frame": 772,
+          "end_frame": 795
         },
         {
           "word": "limited",
-          "start": 24.9,
-          "end": 25.31,
-          "start_frame": 747,
-          "end_frame": 759
-        },
-        {
-          "word": "availability",
-          "start": 25.31,
-          "end": 26.17,
-          "start_frame": 759,
-          "end_frame": 785
-        },
-        {
-          "word": "can",
-          "start": 26.17,
-          "end": 26.36,
-          "start_frame": 785,
-          "end_frame": 791
-        },
-        {
-          "word": "make",
-          "start": 26.36,
-          "end": 26.6,
-          "start_frame": 791,
-          "end_frame": 798
-        },
-        {
-          "word": "things",
-          "start": 26.6,
-          "end": 26.87,
-          "start_frame": 798,
-          "end_frame": 806
-        },
-        {
-          "word": "seem",
-          "start": 26.87,
-          "end": 27.18,
-          "start_frame": 806,
-          "end_frame": 815
-        },
-        {
-          "word": "more",
-          "start": 27.18,
-          "end": 27.47,
-          "start_frame": 815,
+          "start": 27.04,
+          "end": 27.45,
+          "start_frame": 811,
           "end_frame": 824
         },
         {
-          "word": "desirable",
-          "start": 27.47,
-          "end": 28.28,
+          "word": "availability",
+          "start": 27.45,
+          "end": 28.23,
           "start_frame": 824,
-          "end_frame": 848
+          "end_frame": 847
+        },
+        {
+          "word": "can",
+          "start": 28.23,
+          "end": 28.43,
+          "start_frame": 847,
+          "end_frame": 853
+        },
+        {
+          "word": "make",
+          "start": 28.43,
+          "end": 28.65,
+          "start_frame": 853,
+          "end_frame": 860
+        },
+        {
+          "word": "things",
+          "start": 28.65,
+          "end": 28.93,
+          "start_frame": 860,
+          "end_frame": 868
+        },
+        {
+          "word": "seem",
+          "start": 28.93,
+          "end": 29.23,
+          "start_frame": 868,
+          "end_frame": 877
+        },
+        {
+          "word": "more",
+          "start": 29.23,
+          "end": 29.57,
+          "start_frame": 877,
+          "end_frame": 887
+        },
+        {
+          "word": "desirable",
+          "start": 29.57,
+          "end": 30.35,
+          "start_frame": 887,
+          "end_frame": 910
         }
       ]
     },
     {
       "scene": 7,
       "text": "That's why countdowns and 'only a few left' can influence decisions.",
-      "start": 28.58,
-      "end": 33.12,
-      "start_frame": 857,
-      "end_frame": 994,
+      "take": "s07_take1.mp3",
+      "gain_db": -3.0,
+      "start": 30.651,
+      "end": 34.806,
+      "start_frame": 920,
+      "end_frame": 1044,
       "window": [
         30.0,
         35.0
@@ -615,90 +552,92 @@
       "words": [
         {
           "word": "that's",
-          "start": 28.58,
-          "end": 28.76,
-          "start_frame": 857,
-          "end_frame": 863
-        },
-        {
-          "word": "why",
-          "start": 28.76,
-          "end": 28.92,
-          "start_frame": 863,
-          "end_frame": 868
-        },
-        {
-          "word": "countdowns",
-          "start": 28.92,
-          "end": 29.82,
-          "start_frame": 868,
-          "end_frame": 895
-        },
-        {
-          "word": "and",
-          "start": 29.82,
-          "end": 30.16,
-          "start_frame": 895,
-          "end_frame": 905
-        },
-        {
-          "word": "only",
-          "start": 30.35,
-          "end": 30.67,
-          "start_frame": 910,
-          "end_frame": 920
-        },
-        {
-          "word": "a",
-          "start": 30.67,
-          "end": 30.7,
+          "start": 30.651,
+          "end": 30.951,
           "start_frame": 920,
-          "end_frame": 921
-        },
-        {
-          "word": "few",
-          "start": 30.7,
-          "end": 30.96,
-          "start_frame": 921,
           "end_frame": 929
         },
         {
-          "word": "left",
-          "start": 30.96,
-          "end": 31.57,
+          "word": "why",
+          "start": 30.951,
+          "end": 31.111,
           "start_frame": 929,
-          "end_frame": 947
+          "end_frame": 933
+        },
+        {
+          "word": "countdowns",
+          "start": 31.111,
+          "end": 31.881,
+          "start_frame": 933,
+          "end_frame": 956
+        },
+        {
+          "word": "and",
+          "start": 31.881,
+          "end": 32.181,
+          "start_frame": 956,
+          "end_frame": 965
+        },
+        {
+          "word": "only",
+          "start": 32.181,
+          "end": 32.511,
+          "start_frame": 965,
+          "end_frame": 975
+        },
+        {
+          "word": "a",
+          "start": 32.511,
+          "end": 32.551,
+          "start_frame": 975,
+          "end_frame": 977
+        },
+        {
+          "word": "few",
+          "start": 32.551,
+          "end": 32.861,
+          "start_frame": 977,
+          "end_frame": 986
+        },
+        {
+          "word": "left",
+          "start": 32.861,
+          "end": 33.271,
+          "start_frame": 986,
+          "end_frame": 998
         },
         {
           "word": "can",
-          "start": 31.57,
-          "end": 31.75,
-          "start_frame": 947,
-          "end_frame": 952
+          "start": 33.271,
+          "end": 33.421,
+          "start_frame": 998,
+          "end_frame": 1003
         },
         {
           "word": "influence",
-          "start": 31.75,
-          "end": 32.37,
-          "start_frame": 952,
-          "end_frame": 971
+          "start": 33.421,
+          "end": 33.971,
+          "start_frame": 1003,
+          "end_frame": 1019
         },
         {
           "word": "decisions",
-          "start": 32.37,
-          "end": 33.12,
-          "start_frame": 971,
-          "end_frame": 994
+          "start": 33.971,
+          "end": 34.791,
+          "start_frame": 1019,
+          "end_frame": 1044
         }
       ]
     },
     {
       "scene": 8,
       "text": "The foot-in-the-door effect starts with a small request.",
-      "start": 33.51,
-      "end": 36.61,
-      "start_frame": 1005,
-      "end_frame": 1098,
+      "take": "s08_take1.mp3",
+      "gain_db": 1.64,
+      "start": 35.15,
+      "end": 38.51,
+      "start_frame": 1054,
+      "end_frame": 1155,
       "window": [
         35.0,
         40.0
@@ -706,90 +645,92 @@
       "words": [
         {
           "word": "the",
-          "start": 33.51,
-          "end": 33.6,
-          "start_frame": 1005,
-          "end_frame": 1008
+          "start": 35.15,
+          "end": 35.28,
+          "start_frame": 1054,
+          "end_frame": 1058
         },
         {
           "word": "foot",
-          "start": 33.6,
-          "end": 33.87,
-          "start_frame": 1008,
-          "end_frame": 1016
+          "start": 35.28,
+          "end": 35.58,
+          "start_frame": 1058,
+          "end_frame": 1067
         },
         {
           "word": "in",
-          "start": 33.87,
-          "end": 33.96,
-          "start_frame": 1016,
-          "end_frame": 1019
+          "start": 35.58,
+          "end": 35.68,
+          "start_frame": 1067,
+          "end_frame": 1070
         },
         {
           "word": "the",
-          "start": 33.96,
-          "end": 34.04,
-          "start_frame": 1019,
-          "end_frame": 1021
+          "start": 35.68,
+          "end": 35.76,
+          "start_frame": 1070,
+          "end_frame": 1073
         },
         {
           "word": "door",
-          "start": 34.04,
-          "end": 34.37,
-          "start_frame": 1021,
-          "end_frame": 1031
+          "start": 35.76,
+          "end": 36.1,
+          "start_frame": 1073,
+          "end_frame": 1083
         },
         {
           "word": "effect",
-          "start": 34.37,
-          "end": 34.8,
-          "start_frame": 1031,
-          "end_frame": 1044
+          "start": 36.1,
+          "end": 36.55,
+          "start_frame": 1083,
+          "end_frame": 1096
         },
         {
           "word": "starts",
-          "start": 34.8,
-          "end": 35.23,
-          "start_frame": 1044,
-          "end_frame": 1057
+          "start": 36.55,
+          "end": 37.07,
+          "start_frame": 1096,
+          "end_frame": 1112
         },
         {
           "word": "with",
-          "start": 35.23,
-          "end": 35.4,
-          "start_frame": 1057,
-          "end_frame": 1062
+          "start": 37.07,
+          "end": 37.26,
+          "start_frame": 1112,
+          "end_frame": 1118
         },
         {
           "word": "a",
-          "start": 35.4,
-          "end": 35.43,
-          "start_frame": 1062,
-          "end_frame": 1063
+          "start": 37.26,
+          "end": 37.31,
+          "start_frame": 1118,
+          "end_frame": 1119
         },
         {
           "word": "small",
-          "start": 35.43,
-          "end": 35.9,
-          "start_frame": 1063,
-          "end_frame": 1077
+          "start": 37.31,
+          "end": 37.83,
+          "start_frame": 1119,
+          "end_frame": 1135
         },
         {
           "word": "request",
-          "start": 35.9,
-          "end": 36.61,
-          "start_frame": 1077,
-          "end_frame": 1098
+          "start": 37.83,
+          "end": 38.51,
+          "start_frame": 1135,
+          "end_frame": 1155
         }
       ]
     },
     {
       "scene": 9,
       "text": "Agreeing once can make a larger request easier to accept.",
-      "start": 36.99,
-      "end": 40.77,
-      "start_frame": 1110,
-      "end_frame": 1223,
+      "take": "s09_take2.mp3",
+      "gain_db": 0.0,
+      "start": 40.15,
+      "end": 43.941,
+      "start_frame": 1204,
+      "end_frame": 1318,
       "window": [
         40.0,
         45.0
@@ -797,83 +738,85 @@
       "words": [
         {
           "word": "agreeing",
-          "start": 36.99,
-          "end": 37.57,
-          "start_frame": 1110,
-          "end_frame": 1127
+          "start": 40.15,
+          "end": 40.75,
+          "start_frame": 1204,
+          "end_frame": 1222
         },
         {
           "word": "once",
-          "start": 37.57,
-          "end": 38.11,
-          "start_frame": 1127,
-          "end_frame": 1143
+          "start": 40.75,
+          "end": 41.22,
+          "start_frame": 1222,
+          "end_frame": 1237
         },
         {
           "word": "can",
-          "start": 38.11,
-          "end": 38.33,
-          "start_frame": 1143,
-          "end_frame": 1150
+          "start": 41.22,
+          "end": 41.39,
+          "start_frame": 1237,
+          "end_frame": 1242
         },
         {
           "word": "make",
-          "start": 38.33,
-          "end": 38.51,
-          "start_frame": 1150,
-          "end_frame": 1155
+          "start": 41.39,
+          "end": 41.57,
+          "start_frame": 1242,
+          "end_frame": 1247
         },
         {
           "word": "a",
-          "start": 38.51,
-          "end": 38.54,
-          "start_frame": 1155,
-          "end_frame": 1156
+          "start": 41.57,
+          "end": 41.61,
+          "start_frame": 1247,
+          "end_frame": 1248
         },
         {
           "word": "larger",
-          "start": 38.54,
-          "end": 39.0,
-          "start_frame": 1156,
-          "end_frame": 1170
+          "start": 41.61,
+          "end": 42.09,
+          "start_frame": 1248,
+          "end_frame": 1263
         },
         {
           "word": "request",
-          "start": 39.0,
-          "end": 39.59,
-          "start_frame": 1170,
-          "end_frame": 1188
+          "start": 42.09,
+          "end": 42.74,
+          "start_frame": 1263,
+          "end_frame": 1282
         },
         {
           "word": "easier",
-          "start": 39.59,
-          "end": 39.99,
-          "start_frame": 1188,
-          "end_frame": 1200
+          "start": 42.74,
+          "end": 43.19,
+          "start_frame": 1282,
+          "end_frame": 1296
         },
         {
           "word": "to",
-          "start": 39.99,
-          "end": 40.16,
-          "start_frame": 1200,
-          "end_frame": 1205
+          "start": 43.19,
+          "end": 43.34,
+          "start_frame": 1296,
+          "end_frame": 1300
         },
         {
           "word": "accept",
-          "start": 40.16,
-          "end": 40.77,
-          "start_frame": 1205,
-          "end_frame": 1223
+          "start": 43.34,
+          "end": 43.93,
+          "start_frame": 1300,
+          "end_frame": 1318
         }
       ]
     },
     {
       "scene": 10,
       "text": "But threaten someone's freedom, and reactance may make them push back.",
-      "start": 41.09,
-      "end": 45.2,
-      "start_frame": 1233,
-      "end_frame": 1356,
+      "take": "s10_take2.mp3",
+      "gain_db": -0.55,
+      "start": 45.102,
+      "end": 49.234,
+      "start_frame": 1353,
+      "end_frame": 1477,
       "window": [
         45.0,
         50.0
@@ -881,90 +824,92 @@
       "words": [
         {
           "word": "but",
-          "start": 41.09,
-          "end": 41.23,
-          "start_frame": 1233,
-          "end_frame": 1237
+          "start": 45.102,
+          "end": 45.282,
+          "start_frame": 1353,
+          "end_frame": 1358
         },
         {
           "word": "threaten",
-          "start": 41.23,
-          "end": 41.65,
-          "start_frame": 1237,
-          "end_frame": 1250
+          "start": 45.282,
+          "end": 45.652,
+          "start_frame": 1358,
+          "end_frame": 1370
         },
         {
           "word": "someone's",
-          "start": 41.65,
-          "end": 42.11,
-          "start_frame": 1250,
-          "end_frame": 1263
+          "start": 45.652,
+          "end": 46.102,
+          "start_frame": 1370,
+          "end_frame": 1383
         },
         {
           "word": "freedom",
-          "start": 42.11,
-          "end": 42.69,
-          "start_frame": 1263,
-          "end_frame": 1281
+          "start": 46.102,
+          "end": 46.722,
+          "start_frame": 1383,
+          "end_frame": 1402
         },
         {
           "word": "and",
-          "start": 42.93,
-          "end": 43.07,
-          "start_frame": 1288,
-          "end_frame": 1292
+          "start": 46.942,
+          "end": 47.102,
+          "start_frame": 1408,
+          "end_frame": 1413
         },
         {
           "word": "reactance",
-          "start": 43.07,
-          "end": 43.82,
-          "start_frame": 1292,
-          "end_frame": 1315
+          "start": 47.102,
+          "end": 47.782,
+          "start_frame": 1413,
+          "end_frame": 1433
         },
         {
           "word": "may",
-          "start": 43.82,
-          "end": 44.11,
-          "start_frame": 1315,
-          "end_frame": 1323
+          "start": 47.782,
+          "end": 48.082,
+          "start_frame": 1433,
+          "end_frame": 1442
         },
         {
           "word": "make",
-          "start": 44.11,
-          "end": 44.36,
-          "start_frame": 1323,
-          "end_frame": 1331
+          "start": 48.082,
+          "end": 48.322,
+          "start_frame": 1442,
+          "end_frame": 1450
         },
         {
           "word": "them",
-          "start": 44.36,
-          "end": 44.52,
-          "start_frame": 1331,
-          "end_frame": 1336
+          "start": 48.322,
+          "end": 48.502,
+          "start_frame": 1450,
+          "end_frame": 1455
         },
         {
           "word": "push",
-          "start": 44.52,
-          "end": 44.76,
-          "start_frame": 1336,
-          "end_frame": 1343
+          "start": 48.502,
+          "end": 48.742,
+          "start_frame": 1455,
+          "end_frame": 1462
         },
         {
           "word": "back",
-          "start": 44.76,
-          "end": 45.2,
-          "start_frame": 1343,
-          "end_frame": 1356
+          "start": 48.742,
+          "end": 49.232,
+          "start_frame": 1462,
+          "end_frame": 1477
         }
       ]
     },
     {
       "scene": 11,
       "text": "Sometimes, controlling your choices starts by making you feel you have none.",
-      "start": 45.64,
-      "end": 50.28,
-      "start_frame": 1369,
-      "end_frame": 1508,
+      "take": "s11_take3.mp3",
+      "gain_db": 1.39,
+      "start": 49.534,
+      "end": 54.9,
+      "start_frame": 1486,
+      "end_frame": 1647,
       "window": [
         50.0,
         55.0
@@ -972,87 +917,87 @@
       "words": [
         {
           "word": "sometimes",
-          "start": 45.64,
-          "end": 46.55,
-          "start_frame": 1369,
-          "end_frame": 1396
+          "start": 49.534,
+          "end": 50.384,
+          "start_frame": 1486,
+          "end_frame": 1512
         },
         {
           "word": "controlling",
-          "start": 46.55,
-          "end": 47.14,
-          "start_frame": 1396,
-          "end_frame": 1414
+          "start": 50.534,
+          "end": 51.104,
+          "start_frame": 1516,
+          "end_frame": 1533
         },
         {
           "word": "your",
-          "start": 47.14,
-          "end": 47.27,
-          "start_frame": 1414,
-          "end_frame": 1418
+          "start": 51.104,
+          "end": 51.214,
+          "start_frame": 1533,
+          "end_frame": 1536
         },
         {
           "word": "choices",
-          "start": 47.27,
-          "end": 48.01,
-          "start_frame": 1418,
-          "end_frame": 1440
+          "start": 51.214,
+          "end": 51.824,
+          "start_frame": 1536,
+          "end_frame": 1555
         },
         {
           "word": "starts",
-          "start": 48.01,
-          "end": 48.44,
-          "start_frame": 1440,
-          "end_frame": 1453
+          "start": 51.824,
+          "end": 52.234,
+          "start_frame": 1555,
+          "end_frame": 1567
         },
         {
           "word": "by",
-          "start": 48.44,
-          "end": 48.57,
-          "start_frame": 1453,
-          "end_frame": 1457
+          "start": 52.234,
+          "end": 52.384,
+          "start_frame": 1567,
+          "end_frame": 1572
         },
         {
           "word": "making",
-          "start": 48.57,
-          "end": 48.95,
-          "start_frame": 1457,
-          "end_frame": 1468
+          "start": 52.384,
+          "end": 52.784,
+          "start_frame": 1572,
+          "end_frame": 1584
         },
         {
           "word": "you",
-          "start": 48.95,
-          "end": 49.06,
-          "start_frame": 1468,
-          "end_frame": 1472
+          "start": 52.784,
+          "end": 52.884,
+          "start_frame": 1584,
+          "end_frame": 1587
         },
         {
           "word": "feel",
-          "start": 49.06,
-          "end": 49.42,
-          "start_frame": 1472,
-          "end_frame": 1483
+          "start": 52.884,
+          "end": 53.544,
+          "start_frame": 1587,
+          "end_frame": 1606
         },
         {
           "word": "you",
-          "start": 49.42,
-          "end": 49.57,
-          "start_frame": 1483,
-          "end_frame": 1487
+          "start": 54.054,
+          "end": 54.194,
+          "start_frame": 1622,
+          "end_frame": 1626
         },
         {
           "word": "have",
-          "start": 49.57,
-          "end": 49.95,
-          "start_frame": 1487,
-          "end_frame": 1498
+          "start": 54.194,
+          "end": 54.554,
+          "start_frame": 1626,
+          "end_frame": 1637
         },
         {
           "word": "none",
-          "start": 49.95,
-          "end": 50.28,
-          "start_frame": 1498,
-          "end_frame": 1508
+          "start": 54.554,
+          "end": 54.894,
+          "start_frame": 1637,
+          "end_frame": 1647
         }
       ]
     }
