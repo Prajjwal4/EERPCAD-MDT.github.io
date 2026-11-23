@@ -38,25 +38,44 @@ def _frames(video: Path, box: tuple[int, int, int, int]) -> np.ndarray:
 def verify_caption_sync(video: Path, events, cfg: Config, tolerance: int = 4) -> dict:
     """For every word of every kinetic caption event: find the first frame at which its ink is visible in the
     ENCODED video (inside that word's own bounding box) and compare with the audio-aligned start frame.
-    Text appears after a short fade-in ramp, so the expected onset is start..start+tolerance."""
+    The pixel band that is decoded is derived from where the words really are (per caption position), so 3-line captions
+    and upper headlines are covered. Text appears after a short fade-in ramp, so the expected onset is start..start+tolerance."""
     cap = CaptionRenderer(cfg)
-    band = (0, 1380, 1080, 1700)
-    fr = _frames(video, band)
+    clean = video.parent / "clean" / f"{video.stem}_clean.mp4"
+    clean = clean if clean.is_file() else None
+    thr_px = 50 if clean is not None else 120              # difference threshold vs colour threshold
+    boxes = {}                                            # (event index, word index) -> ink bbox
+    for ei, ev in enumerate(events):
+        for i in range(len(ev.group.words)):
+            if ev.word_starts[i] > -100:
+                boxes[(ei, i)] = cap.build(ev.group, ev.kind, ev.position, only=frozenset([i])).ink_bbox
+    bands = {}
+    for pos in {ev.position for ev in events}:
+        bb = [boxes[(ei, i)] for (ei, i) in boxes if events[ei].position == pos]
+        if bb:
+            band = (0, max(0, min(b[1] for b in bb) - 8), 1080, min(1920, max(b[3] for b in bb) + 8))
+            fr = _frames(video, band)
+            if clean is not None:                          # caption ink = exact difference to the caption-free twin
+                fr = np.abs(fr - _frames(clean, band)).max(axis=3, keepdims=True).repeat(3, axis=3)
+            bands[pos] = (band, fr)
+    n_frames = next(iter(bands.values()))[1].shape[0] if bands else 0
     rows, ok = [], True
-    for ev in events:
-        words = ev.group.words
+    for ei, ev in enumerate(events):
         hit = cap.highlighted_indices(ev.group)
-        for i, w in enumerate(words):
+        for i, w in enumerate(ev.group.words):
             ws = ev.word_starts[i]
-            if ws <= -100:                                     # carried over from the previous scene
+            if ws <= -100:                                 # carried over from the previous scene
                 rows.append((w, ws, None, "carried-in")); continue
-            if ws >= len(fr) - 2:                              # begins at/after the last frame: appears in the next scene
+            if ws >= n_frames - 2:                         # begins at/after the last frame: appears in the next scene
                 rows.append((w, ws, None, "next-scene")); continue
-            l, t, r, b = cap.build(ev.group, ev.kind, ev.position, only=frozenset([i])).ink_bbox
+            l, t, r, b = boxes[(ei, i)]
+            band, fr = bands[ev.position]
             reg = fr[:, t - band[1]:b - band[1], l:r]
-            if i in hit:   # red word: red-dominant pixels
+            if clean is not None:
+                ink = (reg[..., 0] > thr_px).sum(axis=(1, 2))
+            elif i in hit:   # fallback without the caption-free twin: red-dominant pixels
                 ink = ((reg[..., 0] > 150) & (reg[..., 1] < 110) & (reg[..., 2] < 120)).sum(axis=(1, 2))
-            else:          # white word
+            else:            # white word
                 ink = (reg.min(axis=3) > 120).sum(axis=(1, 2))
             thr = max(40, 0.08 * ink.max())
             # Another group (the outgoing one) may overlap this word's box until THIS group's start frame, so
@@ -69,8 +88,11 @@ def verify_caption_sync(video: Path, events, cfg: Config, tolerance: int = 4) ->
             good = onset is not None and (not early) and onset <= ws + tolerance
             ok &= good
             rows.append((w, ws, onset, "OK" if good else ("EARLY" if early else "CHECK")))
-    return {"ok": ok, "rows": rows, "frames": len(fr),
-           "empty_before_first_word": int(((fr.min(axis=3) > 120).sum(axis=(1, 2))[:min(e.start for e in events)]).max(initial=0))}
+    first_start = min((e.start for e in events), default=0)
+    stray = 0
+    for band, fr in bands.values():
+        stray = max(stray, int((fr.min(axis=3) > thr_px).sum(axis=(1, 2))[:first_start].max(initial=0)))
+    return {"ok": ok, "rows": rows, "frames": n_frames, "empty_before_first_word": stray}
 
 
 def persists_to_end(video: Path, last_event, cfg: Config) -> bool:

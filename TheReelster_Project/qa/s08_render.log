@@ -1,0 +1,17 @@
+layout: {'bounds': [132, 619, 587, 1357], 'ok': True}
+format: 1080x1920 30/1 yuv420p frames=150 duration=5.000s -> OK
+caption sync (ink onset in the encoded video vs aligned word start):
+   can          aligned f-100   visible f   -   carried-in
+   influence    aligned f-100   visible f   -   carried-in
+   decisions.   aligned f-100   visible f   -   carried-in
+   The          aligned f   5   visible f   6   OK
+   foot-in-the-door aligned f   8   visible f   5   EARLY
+   effect       aligned f  33   visible f  35   OK
+   starts       aligned f  47   visible f  48   OK
+   with         aligned f  62   visible f  63   OK
+   a            aligned f  68   visible f  69   OK
+   small        aligned f  69   visible f  71   OK
+   request.     aligned f  85   visible f  87   OK
+   nothing on screen before the first word (max ink in earlier frames): 0
+caption-free copy: OK
+S08 FAILED VERIFICATION

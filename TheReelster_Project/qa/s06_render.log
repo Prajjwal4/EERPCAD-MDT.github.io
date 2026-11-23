@@ -1,0 +1,21 @@
+layout: {'bounds': [162, 619, 739, 1357], 'ok': True}
+format: 1080x1920 30/1 yuv420p frames=150 duration=5.000s -> OK
+caption sync (ink onset in the encoded video vs aligned word start):
+   feel         aligned f-100   visible f   -   carried-in
+   more         aligned f-100   visible f   -   carried-in
+   natural.     aligned f-100   visible f   -   carried-in
+   Then         aligned f   5   visible f   7   OK
+   there's      aligned f  15   visible f  17   OK
+   scarcity:    aligned f  22   visible f  24   OK
+   limited      aligned f  62   visible f  64   OK
+   availability aligned f  74   visible f  75   OK
+   can          aligned f  97   visible f  99   OK
+   make         aligned f 103   visible f 104   OK
+   things       aligned f 111   visible f 113   OK
+   seem         aligned f 118   visible f 119   OK
+   more         aligned f 127   visible f 128   OK
+   desirable.   aligned f 137   visible f 138   OK
+   nothing on screen before the first word (max ink in earlier frames): 0
+   final group still on screen at the last frame (carries into next scene): True
+caption-free copy: OK
+S06 VERIFIED

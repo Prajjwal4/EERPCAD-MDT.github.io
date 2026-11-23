@@ -1,0 +1,16 @@
+layout: {'bounds': [250, 619, 829, 1357], 'ok': True}
+Traceback (most recent call last):
+  File "/home/user/EERPCAD-MDT.github.io/TheReelster_Project/scripts/scene_s04.py", line 167, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/EERPCAD-MDT.github.io/TheReelster_Project/scripts/scene_s04.py", line 162, in main
+    ok = common.run(4, build_scene, WORLD, R, preview_f=A_UNC + 22, key_f=A_UNC + 24, contact_fs=[6, 34, 54, 80, 106, 126, 142, 149], layout_fn=layout_check)
+  File "/home/user/EERPCAD-MDT.github.io/TheReelster_Project/scripts/scene_common.py", line 63, in run
+    persists = qa_scene.persists_to_end(out, scene.captions[-1], cfg) if scene.captions and not scene.captions[-1].fade_out else None
+               ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/EERPCAD-MDT.github.io/TheReelster_Project/scripts/qa_scene.py", line 76, in persists_to_end
+    fr = _frames(video, (l, t, r, b))
+  File "/home/user/EERPCAD-MDT.github.io/TheReelster_Project/scripts/qa_scene.py", line 32, in _frames
+    return np.frombuffer(raw, np.uint8).reshape(-1, y1 - y0, x1 - x0, 3).astype(np.int32)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: cannot reshape array of size 54489600 into shape (172,705,3)

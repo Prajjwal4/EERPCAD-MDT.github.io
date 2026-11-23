@@ -1,0 +1,16 @@
+layout: {'bounds': [234, 619, 831, 1357], 'ok': True}
+format: 1080x1920 30/1 yuv420p frames=150 duration=5.000s -> OK
+caption sync (ink onset in the encoded video vs aligned word start):
+   Agreeing     aligned f   5   visible f   7   OK
+   once         aligned f  22   visible f  23   OK
+   can          aligned f  37   visible f  39   OK
+   make         aligned f  42   visible f  44   OK
+   a            aligned f  48   visible f  50   OK
+   larger       aligned f  48   visible f  50   OK
+   request      aligned f  63   visible f  65   OK
+   easier       aligned f  83   visible f  85   OK
+   to           aligned f  96   visible f  98   OK
+   accept.      aligned f 100   visible f 102   OK
+   nothing on screen before the first word (max ink in earlier frames): 0
+caption-free copy: OK
+S09 VERIFIED

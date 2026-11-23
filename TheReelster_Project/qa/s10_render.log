@@ -1,0 +1,22 @@
+layout: {'bounds': [303, 619, 777, 1357], 'ok': True}
+format: 1080x1920 30/1 yuv420p frames=150 duration=5.000s -> OK
+caption sync (ink onset in the encoded video vs aligned word start):
+   But          aligned f   4   visible f   6   OK
+   threaten     aligned f   8   visible f   9   OK
+   someone's    aligned f  20   visible f  22   OK
+   freedom,     aligned f  33   visible f  35   OK
+   and          aligned f  59   visible f   -   CHECK
+   reactance    aligned f  63   visible f   -   CHECK
+   may          aligned f  83   visible f   -   CHECK
+   make         aligned f  92   visible f  93   OK
+   them         aligned f 100   visible f 101   OK
+   push         aligned f 105   visible f 107   OK
+   back.        aligned f 112   visible f 113   OK
+   Sometimes,   aligned f 137   visible f   -   CHECK
+   controlling  aligned f 166   visible f   -   next-scene
+   your         aligned f 183   visible f   -   next-scene
+   choices      aligned f 186   visible f   -   next-scene
+   nothing on screen before the first word (max ink in earlier frames): 0
+   final group still on screen at the last frame (carries into next scene): True
+caption-free copy: OK
+S10 FAILED VERIFICATION

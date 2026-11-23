@@ -1,0 +1,16 @@
+layout: {'bounds': [367, 611, 711, 1357], 'title': {'title_lines': ["WHO'S REALLY", 'CONTROLLING', 'YOUR MIND?'], 'title_px': 100, 'title_bottom': 586, 'head_top': 611, 'brand': ['THE REELSTER'], 'clear_of_figure': True}, 'ok': True}
+format: 1080x1920 30/1 yuv420p frames=150 duration=5.000s -> OK
+caption sync (ink onset in the encoded video vs aligned word start):
+   you          aligned f-100   visible f   -   carried-in
+   have         aligned f-100   visible f   -   carried-in
+   none.        aligned f-100   visible f   -   carried-in
+   WHO'S        aligned f  16   visible f   -   CHECK
+   REALLY       aligned f  24   visible f   -   CHECK
+   CONTROLLING  aligned f  32   visible f   -   CHECK
+   YOUR         aligned f  42   visible f   -   CHECK
+   MIND?        aligned f  50   visible f   -   CHECK
+   THE          aligned f  70   visible f  72   OK
+   REELSTER     aligned f  80   visible f  81   OK
+   nothing on screen before the first word (max ink in earlier frames): 0
+caption-free copy: OK
+S12 FAILED VERIFICATION

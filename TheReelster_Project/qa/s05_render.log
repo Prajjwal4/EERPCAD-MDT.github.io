@@ -1,0 +1,20 @@
+layout: {'bounds': [260, 619, 819, 1357], 'ok': True}
+format: 1080x1920 30/1 yuv420p frames=150 duration=5.000s -> OK
+caption sync (ink onset in the encoded video vs aligned word start):
+   copy         aligned f-100   visible f   -   carried-in
+   gestures     aligned f-100   visible f   -   carried-in
+   and          aligned f  -1   visible f   1   OK
+   expressions. aligned f   3   visible f   5   OK
+   This         aligned f  38   visible f  40   OK
+   Chameleon    aligned f  44   visible f  45   OK
+   Effect       aligned f  60   visible f  61   OK
+   can          aligned f  74   visible f  76   OK
+   help         aligned f  77   visible f  79   OK
+   interactions aligned f  85   visible f  87   OK
+   feel         aligned f 107   visible f 109   OK
+   more         aligned f 114   visible f 116   OK
+   natural.     aligned f 119   visible f 121   OK
+   nothing on screen before the first word (max ink in earlier frames): 0
+   final group still on screen at the last frame (carries into next scene): True
+caption-free copy: OK
+S05 VERIFIED

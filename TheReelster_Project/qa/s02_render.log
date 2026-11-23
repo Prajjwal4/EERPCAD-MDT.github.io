@@ -8,10 +8,10 @@ caption sync (ink onset in the encoded video vs aligned word start):
    ignored      aligned f  94   visible f  96   OK
    can          aligned f 110   visible f 112   OK
    threaten     aligned f 116   visible f 118   OK
-   our          aligned f 131   visible f 129   CHECK
+   our          aligned f 131   visible f 132   OK
    sense        aligned f 134   visible f 135   OK
    of           aligned f 144   visible f 146   OK
    belonging.   aligned f 147   visible f 149   OK
    nothing on screen before the first word (max ink in earlier frames): 0
    final group still on screen at the last frame (carries into next scene): True
-S02 FAILED VERIFICATION
+S02 VERIFIED
