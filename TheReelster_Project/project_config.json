@@ -554,5 +554,51 @@
         ]
       }
     ]
+  },
+  "final_assembly": {
+    "trigger": "ONLY after all 12 scenes are individually completed, reviewed and approved by the user (script.scenes[*].approved == true). Never assemble earlier.",
+    "automatic": true,
+    "deliverable": {
+      "file": "output/TheReelster_Final.mp4",
+      "container": "mp4",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "resolution": [
+        1080,
+        1920
+      ],
+      "fps": 30,
+      "frames": 1800,
+      "duration_seconds": 60,
+      "audio": "AAC 192k 48 kHz stereo: ElevenLabs narration (assets/audio/voiceover_01.wav) + ducked music bed + sound effects"
+    },
+    "also_create": {
+      "full_length_preview": "output/TheReelster_Preview.mp4",
+      "qa_report": "output/qa_report.txt",
+      "captions": "output/captions.srt",
+      "thumbnail": "output/thumbnail.jpg"
+    },
+    "must_not_have": [
+      "gaps",
+      "overlapping audio",
+      "frozen frames",
+      "unintended black screens"
+    ],
+    "must_have": [
+      "consistent captions across scenes (including captions that carry across scene cuts)",
+      "consistent transitions",
+      "sound effects",
+      "background music bed",
+      "narration synchronised end to end"
+    ],
+    "automated_checks_before_declaring_complete": [
+      "exactly 1800 frames, 1080x1920, 30/1 fps, H.264 yuv420p, duration 60.000 s",
+      "no frozen frames (consecutive-frame difference above a floor everywhere except deliberate holds)",
+      "no unintended black frames (only the designed dips at scene boundaries, none longer than the fade)",
+      "audio: no gaps or overlaps between narration lines; narration matches voiceover_timing.json; voiceover -16 LUFS, peak <= -1.5 dBFS; mix true peak <= -1.0 dBTP",
+      "scene 12 voice-free; narration ends before 55 s",
+      "caption words appear within a few frames of their aligned audio frames (all scenes)",
+      "every scene boundary seam is continuous (last frame of Sn to first frame of Sn+1 has no jump, no duplicate frame)"
+    ]
   }
 }

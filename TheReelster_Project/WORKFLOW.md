@@ -16,3 +16,10 @@ Format: 1080x1920 (9:16), 30 fps, YouTube Shorts. 12 scenes x 150 frames = 1800 
 
 ## Missing-asset policy
 A missing asset stops the build. Nothing is silently substituted.
+
+## Final assembly (gated)
+When - and only when - all 12 scenes are individually completed, reviewed and approved by the user, the project is assembled
+automatically into ONE video: `output/TheReelster_Final.mp4` (1080x1920, 30 fps, H.264, full ElevenLabs narration, consistent captions,
+transitions, sound effects and music) plus a full-length preview and an automated QA report. `scripts/assemble_final.py` enforces the gate:
+it refuses to run unless every scene is approved (`script.scenes[*].approved`) and every `scenes/SXX.mp4` exists and passes its checks.
+The project is not declared complete until the automated quality checks in `final_assembly` all pass.
