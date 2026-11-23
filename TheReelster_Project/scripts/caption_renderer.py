@@ -19,7 +19,7 @@ _STRIP = re.compile(r"[^\w'’-]+")
 
 
 def _norm(word: str) -> str:
-    return _STRIP.sub("", word).lower()
+    return _STRIP.sub("", word).lower().strip("'\u2019")
 
 
 @dataclass(frozen=True)

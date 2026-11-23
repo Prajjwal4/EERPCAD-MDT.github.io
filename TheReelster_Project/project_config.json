@@ -316,5 +316,243 @@
       "ElevenLabs": "voiceover narration ONLY (text-to-speech through the connector). Never images, video or transcription."
     },
     "visual_style": "DARK CINEMATIC STICKMAN PSYCHOLOGY STORYTELLING (approved; replaces the realistic-silhouette direction)"
+  },
+  "script": {
+    "title": "WHO'S REALLY CONTROLLING YOUR MIND?",
+    "format": "YouTube Shorts (9:16)",
+    "duration_seconds": 60,
+    "narration_delivery": "Deep, calm, intriguing male British voice. Controlled pacing, conversational but suspenseful.",
+    "_note": "APPROVED SCRIPT, copied verbatim (typographic apostrophes/quotes normalised to straight ones; the words are unchanged). Scene n owns the window [(n-1)*5, n*5] s = 150 frames. `caption_groups` (<=7 words each) and `highlight` are production choices, marked proposed until you approve them per scene; S01's are approved.",
+    "scenes": [
+      {
+        "id": "S01",
+        "number": 1,
+        "title": "THE HOOK",
+        "window": [
+          0,
+          5
+        ],
+        "narration": "Your mind has weaknesses you probably don't even know about.",
+        "delivery": "Intriguing, slightly unsettling. Emphasise \"weaknesses\".",
+        "caption_groups": [
+          "Your mind has weaknesses",
+          "you probably don't even know about."
+        ],
+        "highlight": [
+          "weaknesses"
+        ],
+        "approved": true
+      },
+      {
+        "id": "S02",
+        "number": 2,
+        "title": "SOCIAL EXCLUSION",
+        "window": [
+          5,
+          10
+        ],
+        "narration": "First, social exclusion: being ignored can threaten our sense of belonging.",
+        "delivery": "Calm, explanatory.",
+        "caption_groups": [
+          "First, social exclusion:",
+          "being ignored can threaten",
+          "our sense of belonging."
+        ],
+        "highlight": [
+          "social exclusion"
+        ],
+        "approved": false
+      },
+      {
+        "id": "S03",
+        "number": 3,
+        "title": "THE EMOTIONAL EFFECT",
+        "window": [
+          10,
+          15
+        ],
+        "narration": "That feeling can hurt, even when no one says a word.",
+        "delivery": "Slightly slower, empathetic.",
+        "caption_groups": [
+          "That feeling can hurt,",
+          "even when no one says a word."
+        ],
+        "highlight": [],
+        "approved": false
+      },
+      {
+        "id": "S04",
+        "number": 4,
+        "title": "MIRRORING",
+        "window": [
+          15,
+          20
+        ],
+        "narration": "Next, mirroring: people often unconsciously copy gestures and expressions.",
+        "delivery": "Curious, informative.",
+        "caption_groups": [
+          "Next, mirroring:",
+          "people often unconsciously",
+          "copy gestures and expressions."
+        ],
+        "highlight": [
+          "mirroring"
+        ],
+        "approved": false
+      },
+      {
+        "id": "S05",
+        "number": 5,
+        "title": "THE CHAMELEON EFFECT",
+        "window": [
+          20,
+          25
+        ],
+        "narration": "This Chameleon Effect can help interactions feel more natural.",
+        "delivery": "Confident, explanatory.",
+        "caption_groups": [
+          "This Chameleon Effect",
+          "can help interactions",
+          "feel more natural."
+        ],
+        "highlight": [
+          "Chameleon Effect"
+        ],
+        "approved": false
+      },
+      {
+        "id": "S06",
+        "number": 6,
+        "title": "SCARCITY",
+        "window": [
+          25,
+          30
+        ],
+        "narration": "Then there's scarcity: limited availability can make things seem more desirable.",
+        "delivery": "Slightly more intense.",
+        "caption_groups": [
+          "Then there's scarcity:",
+          "limited availability can make",
+          "things seem more desirable."
+        ],
+        "highlight": [
+          "scarcity"
+        ],
+        "approved": false
+      },
+      {
+        "id": "S07",
+        "number": 7,
+        "title": "URGENCY",
+        "window": [
+          30,
+          35
+        ],
+        "narration": "That's why countdowns and 'only a few left' can influence decisions.",
+        "delivery": "Emphasise \"countdowns\" and \"few left\".",
+        "caption_groups": [
+          "That's why countdowns",
+          "and 'only a few left'",
+          "can influence decisions."
+        ],
+        "highlight": [
+          "countdowns",
+          "few left"
+        ],
+        "approved": false
+      },
+      {
+        "id": "S08",
+        "number": 8,
+        "title": "FOOT-IN-THE-DOOR",
+        "window": [
+          35,
+          40
+        ],
+        "narration": "The foot-in-the-door effect starts with a small request.",
+        "delivery": "Deliberate, intriguing.",
+        "caption_groups": [
+          "The foot-in-the-door effect",
+          "starts with a small request."
+        ],
+        "highlight": [
+          "foot-in-the-door"
+        ],
+        "approved": false
+      },
+      {
+        "id": "S09",
+        "number": 9,
+        "title": "SMALL AGREEMENTS",
+        "window": [
+          40,
+          45
+        ],
+        "narration": "Agreeing once can make a larger request easier to accept.",
+        "delivery": "Slightly suspenseful.",
+        "caption_groups": [
+          "Agreeing once can make",
+          "a larger request",
+          "easier to accept."
+        ],
+        "highlight": [],
+        "approved": false
+      },
+      {
+        "id": "S10",
+        "number": 10,
+        "title": "PSYCHOLOGICAL REACTANCE",
+        "window": [
+          45,
+          50
+        ],
+        "narration": "But threaten someone's freedom, and reactance may make them push back.",
+        "delivery": "Stronger, more dramatic.",
+        "caption_groups": [
+          "But threaten someone's freedom,",
+          "and reactance may make them push back."
+        ],
+        "highlight": [
+          "reactance"
+        ],
+        "approved": false
+      },
+      {
+        "id": "S11",
+        "number": 11,
+        "title": "THE REVELATION",
+        "window": [
+          50,
+          55
+        ],
+        "narration": "Sometimes, controlling your choices starts by making you feel you have none.",
+        "delivery": "Slow, serious, thought-provoking. Pause slightly before \"you have none\".",
+        "caption_groups": [
+          "Sometimes, controlling your choices",
+          "starts by making you feel",
+          "you have none."
+        ],
+        "highlight": [],
+        "approved": false
+      },
+      {
+        "id": "S12",
+        "number": 12,
+        "title": "THE REELSTER OUTRO",
+        "window": [
+          55,
+          60
+        ],
+        "narration": null,
+        "delivery": "No voiceover. Let the music and visual branding finish the video.",
+        "caption_groups": [],
+        "highlight": [],
+        "approved": false,
+        "on_screen_text": [
+          "WHO'S REALLY CONTROLLING YOUR MIND?",
+          "THE REELSTER"
+        ]
+      }
+    ]
   }
 }

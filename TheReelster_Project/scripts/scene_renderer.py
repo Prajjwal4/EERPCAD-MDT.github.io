@@ -58,6 +58,7 @@ class CaptionEvent:
     kind: str = "caption"        # "caption" (66px) or "headline" (104px)
     position: str = "lower"      # lower | center | upper
     word_starts: list[int] | None = None   # scene-local frame each word appears (kinetic reveal); None = whole group
+    fade_out: bool = True                  # False when the group continues into the next scene; word_starts <= -100 = already revealed
 
 
 @dataclass
@@ -285,7 +286,7 @@ class SceneRenderer:
             for ev, words in kinetic:
                 if not (ev.start <= i < ev.end):
                     continue
-                out = min(1.0, (ev.end - i) / max(self.cfg.captions["fade_frames"], 1))
+                out = min(1.0, (ev.end - i) / max(self.cfg.captions["fade_frames"], 1)) if ev.fade_out else 1.0
                 for ws, ovw, glow in words:
                     lf = i - ws
                     if lf < 0:

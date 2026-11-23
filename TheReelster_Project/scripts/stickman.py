@@ -28,6 +28,11 @@ class Style:
     foot: float; outline: float; shoulder_half: float; hip_half: float
     supersample: int; world_scale: float
 
+    def scaled(self, k: float) -> "Style":
+        """Same character at another size (depth). Supersample / world scale / outline stay fixed."""
+        keep = ("supersample", "world_scale", "outline")
+        return Style(**{f: (getattr(self, f) if f in keep else getattr(self, f) * k) for f in self.__dataclass_fields__})
+
     @classmethod
     def from_cfg(cls, cfg: Config) -> "Style":
         s = cfg.raw["framework"]["stickman"]
@@ -71,6 +76,7 @@ DEFAULT_POSE = dict(
     hip_x=540.0, lean=0.0, head=0.0, shrug=0.0,
     handL=(-34.0, 232.0), handR=(34.0, 232.0), footL=(-26.0, 347.0), footR=(26.0, 347.0),
     gaze=(0.0, 0.0), brow=0.0, raise_=0.0, wide=0.0, mouth="flat", blink=0.0,
+    turn=0.0,   # body rotation, degrees: 0 = facing camera, +90 = profile facing screen-right, 180 = back to camera, -90 = facing left
 )
 
 
@@ -95,24 +101,30 @@ def ik_outward(root: Vec, target: Vec, l1: float, l2: float, side: int) -> tuple
 def solve(pose: dict, st: Style, floor_y: float) -> dict[str, Vec]:
     """Forward kinematics + IK -> named joint positions, grounded so the lowest foot touches floor_y."""
     p = {**DEFAULT_POSE, **pose}
+    tr = math.radians(p["turn"])
+    cT, sT = math.cos(tr), math.sin(tr)
+    wf = max(abs(cT), 0.18)                       # shoulder / hip width shrinks as the body turns side-on
+    sh_half, hip_half = st.shoulder_half * wf, st.hip_half * wf
+    sideL, sideR = (-1, +1) if abs(sT) < 0.5 else ((1, 1) if sT > 0 else (-1, -1))   # joints bend toward the facing side in profile
     lean = math.radians(p["lean"])
     up = (math.sin(lean), -math.cos(lean))
     perp = (math.cos(lean), math.sin(lean))
     hip = (p["hip_x"], 0.0)
     spine = (hip[0] + up[0] * st.torso, hip[1] + up[1] * st.torso)
     shc = (spine[0] - up[0] * 8, spine[1] - up[1] * 8 - p["shrug"] * 16)
-    shL = (shc[0] - perp[0] * st.shoulder_half, shc[1] - perp[1] * st.shoulder_half)
-    shR = (shc[0] + perp[0] * st.shoulder_half, shc[1] + perp[1] * st.shoulder_half)
+    shL = (shc[0] - perp[0] * sh_half, shc[1] - perp[1] * sh_half)
+    shR = (shc[0] + perp[0] * sh_half, shc[1] + perp[1] * sh_half)
     neck = (spine[0] + up[0] * st.neck, spine[1] + up[1] * st.neck)
     ha = math.radians(p["lean"] + p["head"])
-    head = (neck[0] + math.sin(ha) * st.head_r * 0.92, neck[1] - math.cos(ha) * st.head_r * 0.92)
-    hipL, hipR = (hip[0] - st.hip_half, 0.0), (hip[0] + st.hip_half, 0.0)
+    head = (neck[0] + math.sin(ha) * st.head_r * 0.92 + sT * 0.10 * st.head_r, neck[1] - math.cos(ha) * st.head_r * 0.92)
+    hipL, hipR = (hip[0] - hip_half, 0.0), (hip[0] + hip_half, 0.0)
 
-    elL, haL = ik_outward(shL, (shL[0] + p["handL"][0], shL[1] + p["handL"][1]), st.upper_arm, st.forearm, -1)
-    elR, haR = ik_outward(shR, (shR[0] + p["handR"][0], shR[1] + p["handR"][1]), st.upper_arm, st.forearm, +1)
-    knL, ftL = ik_outward(hipL, (hipL[0] + p["footL"][0], hipL[1] + p["footL"][1]), st.thigh, st.shin, -1)
-    knR, ftR = ik_outward(hipR, (hipR[0] + p["footR"][0], hipR[1] + p["footR"][1]), st.thigh, st.shin, +1)
-    toeL, toeR = (ftL[0] - st.foot, ftL[1]), (ftR[0] + st.foot, ftR[1])
+    elL, haL = ik_outward(shL, (shL[0] + p["handL"][0], shL[1] + p["handL"][1]), st.upper_arm, st.forearm, sideL)
+    elR, haR = ik_outward(shR, (shR[0] + p["handR"][0], shR[1] + p["handR"][1]), st.upper_arm, st.forearm, sideR)
+    knL, ftL = ik_outward(hipL, (hipL[0] + p["footL"][0], hipL[1] + p["footL"][1]), st.thigh, st.shin, sideL)
+    knR, ftR = ik_outward(hipR, (hipR[0] + p["footR"][0], hipR[1] + p["footR"][1]), st.thigh, st.shin, sideR)
+    toeL = (ftL[0] - st.foot * abs(cT) + st.foot * sT, ftL[1])
+    toeR = (ftR[0] + st.foot * abs(cT) + st.foot * sT, ftR[1])
 
     pts = dict(hip=hip, spine=spine, neck=neck, head=head, shL=shL, shR=shR, elL=elL, elR=elR, haL=haL, haR=haR,
                hipL=hipL, hipR=hipR, knL=knL, knR=knR, ftL=ftL, ftR=ftR, toeL=toeL, toeR=toeR)
@@ -209,7 +221,10 @@ def render_character(pose: dict, st: Style, region: tuple[int, int, int, int], f
     ha = pts["_head_angle"][0]
     cx, cy = pts["head"]; r = st.head_r
     ca, sa = math.cos(ha), math.sin(ha)
-    face = lambda u, v: T((cx + (u * ca - v * sa) * r, cy + (u * sa + v * ca) * r))   # head-local -> canvas
+    cT, sT = math.cos(math.radians(p["turn"])), math.sin(math.radians(p["turn"]))
+    us, uo = max(cT, 0.28), 0.62 * sT
+    face_visible = cT > -0.25
+    face = lambda u, v: T((cx + ((u * us + uo) * ca - v * sa) * r, cy + ((u * us + uo) * sa + v * ca) * r))   # head-local -> canvas
 
     def draw_cracks() -> np.ndarray | None:
         if crack <= 0:
@@ -235,7 +250,7 @@ def render_character(pose: dict, st: Style, region: tuple[int, int, int, int], f
     dw, dk = ImageDraw.Draw(fw), ImageDraw.Draw(fk)
     wide, blink = p["wide"], p["blink"]
     er = (0.20 + 0.07 * wide) * r * K
-    for sgn in (-1, 1):
+    for sgn in ((-1, 1) if face_visible else ()):
         ex, ey = face(sgn * 0.36, -0.06)
         h = er * max(0.08, 1 - blink)
         dw.ellipse([ex - er, ey - h, ex + er, ey + h], fill=255)
@@ -250,7 +265,7 @@ def render_character(pose: dict, st: Style, region: tuple[int, int, int, int], f
         inner = (inner[0], inner[1] - 0.16 * w_ - 0.10 * p["raise_"])
         outer = (outer[0], outer[1] + 0.10 * w_ - 0.10 * p["raise_"])
         _stroke(dw, [face(*inner), face(*outer)], 0.075 * r * K)
-    m = p["mouth"]
+    m = p["mouth"] if face_visible else "none"
     mw = 0.07 * r * K
     if m == "flat":
         _stroke(dw, [face(-0.22, 0.46), face(0.22, 0.46)], mw)
