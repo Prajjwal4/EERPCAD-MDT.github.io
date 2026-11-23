@@ -8,7 +8,7 @@ wall behind him starts acting on its own and turns to look at him.
 
 Everything is drawn in code (NumPy + Pillow); FFmpeg encodes. No external generation services.
 Outputs: scenes/S01.mp4, assets/visuals/visual_01.png (keyframe), qa/S01_preview.png.
-Caption frame windows are PROVISIONAL (estimated speech pace) until the voiceover file exists.
+Caption windows and every beat are timed to the real voiceover (assets/audio/voiceover_timing.json).
 """
 from __future__ import annotations
 
@@ -44,34 +44,52 @@ WHITE = np.asarray(cfg.rgb01("primary_text"), np.float32)
 
 NARRATION = "Your mind has weaknesses you probably don't even know about."
 HIGHLIGHT = ("weaknesses",)
-# 10 words > 7-word limit -> two caption groups.
-# PROVISIONAL timing (frames): narration assumed to start at f20 (as the red light finishes fading up)
-# at ~7 frames per syllable (Your 20, mind 27, has 34, weak-nes-ses 41, you 62, prob-ab-ly 69, don't 90,
-# e-ven 97, know 111, a-bout 118). Re-time from the real voiceover once it exists.
-GROUPS = [("Your mind has weaknesses", 20, 60, [20, 27, 34, 41]),
-          ("you probably don't even know about.", 62, 138, [62, 69, 90, 97, 111, 118])]
-HIT = 41   # frame the word 'weaknesses' lands
+
+
+def load_timing() -> list[dict]:
+    """Word timings of scene 1 from the real voiceover (assets/audio/voiceover_timing.json)."""
+    d = json.load(open(cfg.path("assets/audio/voiceover_timing.json")))
+    line = d["lines"][0]
+    assert line["scene"] == 1
+    shown = NARRATION.split()
+    assert len(line["words"]) == len(shown), "timing words must map 1:1 onto the approved narration"
+    return [{"shown": w, **t} for w, t in zip(shown, line["words"])]
+
+
+WORDS = load_timing()
+FR = {t["word"]: (t["start_frame"], t["end_frame"]) for t in WORDS}          # spoken frames per word
+HIT = FR["weaknesses"][0]            # frame the word 'weaknesses' starts being spoken (29)
+SPEECH_END = WORDS[-1]["end_frame"]  # last word ends (110)
+# 10 words > 7-word limit -> two caption groups: split before "you".
+_split = 4
+GROUPS = [(" ".join(t["shown"] for t in WORDS[:_split]), WORDS[0]["start_frame"], WORDS[_split]["start_frame"] + 1,
+           [t["start_frame"] for t in WORDS[:_split]]),
+          (" ".join(t["shown"] for t in WORDS[_split:]), WORDS[_split]["start_frame"] + 1, SPEECH_END + 14,
+           [WORDS[_split]["start_frame"] + 1] + [t["start_frame"] for t in WORDS[_split + 1:]])]
 
 
 # ================================================================= timeline
 def make_timeline() -> Timeline:
+    """Beats are anchored to spoken words: 'mind' f10 (temple tap) -> 'weaknesses' f29 (flinch, cracks) ->
+    'you probably' f51 (looks around) -> 'don't even know' f74 (shrug) -> 'about' f96 -> silence f110."""
     hang = lambda s: (34.0 * s, 232.0)
+    tap_hi, tap_lo = (29.0, -96.0), (27.0, -82.0)
     return Timeline({
-        "lean": [(0, 3), (20, 0), (41, 0), (44, -3), (52, 0), (100, 0), (125, 2)],
-        "head": [(0, 12), (18, 0), (26, -4), (41, -4), (43, -12), (50, 0), (62, -8), (70, 8), (80, 0),
-                 (100, 10), (118, 4), (150, 0)],
-        "handR": [(0, hang(1)), (20, hang(1)), (27, (29.0, -96.0)), (30, (27.0, -82.0)), (33, (29.0, -96.0)),
-                  (36, (27.0, -82.0)), (39, (29.0, -96.0)), (50, hang(1)), (72, hang(1)),
-                  (84, (138.0, 48.0)), (100, (138.0, 44.0)), (112, hang(1))],
-        "handL": [(0, hang(-1)), (72, hang(-1)), (84, (-138.0, 48.0)), (100, (-138.0, 44.0)), (112, hang(-1))],
-        "shrug": [(0, 0), (78, 0), (86, 1), (100, 1), (112, 0)],
-        "gaze": [(0, (0.0, 0.9)), (16, (0.0, 0.9)), (22, (0.0, 0.0)), (41, (0.0, 0.0)), (52, (0.5, -0.2)),
-                 (62, (-1.0, 0.0)), (70, (1.0, 0.0)), (78, (0.0, -0.3)), (100, (0.0, -0.4)), (118, (0.0, 0.2)),
-                 (130, (0.0, 0.0))],
-        "brow": [(0, 0.0), (24, 0.3), (41, 0.3), (44, 1.0), (100, 1.0), (130, 0.6)],
-        "raise_": [(0, 0.0), (24, 0.6), (41, 0.6), (44, 1.0), (60, 0.3), (130, 0.2)],
-        "wide": [(0, 0.0), (41, 0.0), (44, 1.0), (58, 0.3), (130, 0.2)],
-        "mouth": [(0, "flat"), (24, "o"), (41, "o"), (50, "wavy"), (100, "frown"), (130, "flat")],
+        "lean": [(0, 3), (10, 0), (HIT, 0), (HIT + 3, -3), (HIT + 10, 0), (96, 0), (118, 2)],
+        "head": [(0, 12), (9, 0), (14, -4), (HIT - 1, -4), (HIT + 2, -12), (HIT + 9, 0), (54, -8), (62, 8), (72, 0),
+                 (90, 10), (108, 4), (130, 0)],
+        "handR": [(0, hang(1)), (8, hang(1)), (14, tap_hi), (17, tap_lo), (20, tap_hi), (23, tap_lo), (26, tap_hi),
+                  (HIT - 1, tap_hi), (HIT + 13, hang(1)), (64, hang(1)), (76, (138.0, 48.0)), (94, (138.0, 44.0)),
+                  (108, hang(1))],
+        "handL": [(0, hang(-1)), (64, hang(-1)), (76, (-138.0, 48.0)), (94, (-138.0, 44.0)), (108, hang(-1))],
+        "shrug": [(0, 0), (66, 0), (78, 1), (94, 1), (108, 0)],
+        "gaze": [(0, (0.0, 0.9)), (4, (0.0, 0.9)), (10, (0.0, 0.0)), (HIT, (0.0, 0.0)), (HIT + 9, (0.5, -0.2)),
+                 (52, (-1.0, 0.0)), (60, (1.0, 0.0)), (68, (0.0, -0.3)), (92, (0.0, -0.4)), (108, (0.0, 0.2)),
+                 (122, (0.0, 0.0))],
+        "brow": [(0, 0.0), (12, 0.3), (HIT - 1, 0.3), (HIT + 2, 1.0), (100, 1.0), (125, 0.6)],
+        "raise_": [(0, 0.0), (12, 0.6), (HIT - 1, 0.6), (HIT + 2, 1.0), (HIT + 18, 0.3), (125, 0.2)],
+        "wide": [(0, 0.0), (HIT - 1, 0.0), (HIT + 2, 1.0), (HIT + 16, 0.3), (125, 0.2)],
+        "mouth": [(0, "flat"), (12, "o"), (HIT - 1, "o"), (HIT + 9, "wavy"), (88, "frown"), (118, "flat")],
     })
 
 
@@ -79,7 +97,7 @@ TL = make_timeline()
 
 
 def blink(f: float) -> float:
-    return max((max(0.0, 1 - abs(f - c) / 2.0) for c in (13, 56, 118)), default=0.0)
+    return max((max(0.0, 1 - abs(f - c) / 2.0) for c in (8, 46, 104)), default=0.0)
 
 
 def figure_pose(f: float) -> dict:
@@ -94,10 +112,10 @@ def crack_progress(f: float) -> float:
 
 
 def shadow_pose(f: float) -> dict:
-    """The wall shadow copies him (4 frames late) until ~f84, then acts on its own: it turns its
-    head toward him and reaches for his head."""
+    """The wall shadow copies him (4 frames late), then during 'probably don't even know' acts on its own:
+    it turns its head toward him and reaches for his head - and slips back into copying him in the silence."""
     p = figure_pose(f - 4)
-    w = smooth((f - 84) / 28.0)
+    w = smooth((f - 58) / 24.0) * (1 - smooth((f - 114) / 20.0))
     p["head"] = p["head"] + (-26.0 - p["head"]) * w
     p["lean"] = p["lean"] + (-8.0 - p["lean"]) * w
     hl = p["handL"]
@@ -107,7 +125,7 @@ def shadow_pose(f: float) -> dict:
 
 def light_k(f: float) -> float:
     """Red light level: fades up over 20 frames, gentle flicker, a pulse when the cracks appear."""
-    k = smooth(f / 20.0) * (0.92 + 0.06 * math.sin(f * 0.21) + 0.03 * math.sin(f * 0.57 + 1.0))
+    k = smooth(f / 12.0) * (0.92 + 0.06 * math.sin(f * 0.21) + 0.03 * math.sin(f * 0.57 + 1.0))
     return k * (1 + 0.25 * math.exp(-(((f - (HIT + 2)) / 3.0) ** 2)))
 
 
@@ -358,6 +376,10 @@ def main():
     img = world_image(world, HIT + 24)
     x = R.grade.apply(R._planar(np.asarray(img.resize((cfg.width, cfg.height), Image.LANCZOS), np.float32)), 60)
     Image.fromarray((np.clip(x, 0, 1).transpose(1, 2, 0) * 255 + 0.5).astype(np.uint8)).save(key)
+    # QA only: the scene with its 5 s slice of the real voiceover, to check sync by eye/ear (S01.mp4 itself stays silent).
+    subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(out), "-ss", "0", "-t", "5", "-i",
+                    str(cfg.path("assets/audio/voiceover_01.wav")), "-map", "0:v", "-map", "1:a", "-c:v", "copy",
+                    "-c:a", "aac", "-b:a", "192k", "-shortest", str(cfg.path("qa/S01_with_voice.mp4"))], check=True)
     print("preview:", Image.open(preview).size, "| keyframe:", Image.open(key).size)
     print("S01 VERIFIED" if ok else "S01 FAILED VERIFICATION")
     sys.exit(0 if ok else 1)
