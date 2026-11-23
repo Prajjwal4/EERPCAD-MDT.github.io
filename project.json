@@ -1,0 +1,5 @@
+{
+  "project": {"name": "TheReelster_Dark_Psychology_01", "channel": "TheReelster", "title": "5 Psychological Tricks That Can Influence Your Decisions", "category": "Psychology and Human Behaviour", "duration_seconds": 60, "resolution": {"width": 1080, "height": 1920}, "aspect_ratio": "9:16", "fps": 30, "total_frames": 1800, "video_codec": "libx264", "audio_codec": "aac", "pixel_format": "yuv420p", "container": "mp4"},
+  "audio": {"sample_rate": 48000, "channels": 2, "voiceover_target_lufs": -16, "voiceover_peak_dbfs_max": -1.5, "music_target_db": -18, "music_ducking": true, "music_fade_in_seconds": 1.5, "music_fade_out_seconds": 2.0, "true_peak_max_dbtp": -1.0},
+  "assets_required": ["voiceover_01.wav", "bg_music.wav", "sfx_01.wav", "sfx_02.wav", "sfx_03.wav", "visual_01.png", "visual_02.png", "visual_03.png", "visual_04.png", "visual_05.png", "visual_06.png", "visual_07.png", "visual_08.png", "visual_09.png", "visual_10.png", "visual_11.png", "visual_12.png"]
+}
