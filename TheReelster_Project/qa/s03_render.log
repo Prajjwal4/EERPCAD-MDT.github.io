@@ -1,0 +1,20 @@
+layout: {'character_bounds': [185, 625, 499, 1357], 'safe': [90, 180, 990, 1447], 'ok': True}
+format: 1080x1920 30/1 yuv420p frames=150 duration=5.000s -> OK
+caption sync (ink onset in the encoded video vs aligned word start):
+   our          aligned f-100   visible f   -   carried-in
+   sense        aligned f-100   visible f   -   carried-in
+   of           aligned f-100   visible f   -   carried-in
+   belonging.   aligned f  -3   visible f   0   OK
+   That         aligned f  29   visible f  30   OK
+   feeling      aligned f  35   visible f  37   OK
+   can          aligned f  47   visible f  49   OK
+   hurt,        aligned f  52   visible f  54   OK
+   even         aligned f  85   visible f  86   OK
+   when         aligned f  92   visible f  93   OK
+   no           aligned f  99   visible f 101   OK
+   one          aligned f 106   visible f 108   OK
+   says         aligned f 112   visible f 113   OK
+   a            aligned f 120   visible f 122   OK
+   word.        aligned f 121   visible f 123   OK
+   nothing on screen before the first word (max ink in earlier frames): 0
+S03 VERIFIED

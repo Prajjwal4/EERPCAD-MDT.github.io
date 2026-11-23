@@ -17,7 +17,7 @@
     "pixel_format": "yuv420p",
     "container": "mp4"
   },
-  "status": "s03_in_progress",
+  "status": "s03_built_awaiting_review",
   "visual_identity": {
     "background": "#09090D",
     "secondary_background": "#15151C",
